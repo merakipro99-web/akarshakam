@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Question Paper Generator Pro</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['$$', '$$']],
+                packages: {'[+]': ['mhchem']}
+            },
+            loader: { load: ['[tex]/mhchem'] },
+            startup: {
+                ready: () => { MathJax.startup.defaultReady(); }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --panel-bg: #ffffff;
+            --accent-color: #007bff;
+            --border-color: #ced4da;
+        }
+
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; background: var(--bg-color); display: flex; height: 100vh; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        /* Left Control Panel */
+        #control-panel { width: 40%; height: 100%; background: var(--panel-bg); border-right: 2px solid var(--border-color); padding: 20px; overflow-y: auto; box-shadow: 2px 0 10px rgba(0,0,0,0.05); }
+        /* Right Live Preview Area */
+        #preview-panel { width: 60%; height: 100%; overflow-y: auto; padding: 30px 15px; background: #525659; }
+
+        h2, h3 { margin-top: 0; color: #333; border-bottom: 2px solid var(--bg-color); padding-bottom: 8px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #495057; }
+        input, textarea, select { width: 100%; padding: 6px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px; }
+        textarea { resize: vertical; }
+        
+        .btn { background: var(--accent-color); color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: 600; width: 100%; margin-bottom: 8px; transition: background 0.2s; font-size: 13px;}
+        .btn:hover { background: #0056b3; }
+        .btn-secondary { background: #6c757d; }
+        .btn-secondary:hover { background: #5a6268; }
+        .btn-danger { background: #dc3545; color: white; padding: 4px 8px; width: auto; margin: 0; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-danger:hover { background: #bd2130; }
+
+        .flex-row { display: flex; gap: 8px; flex-wrap: wrap; }
+        .flex-row .form-group { flex: 1; min-width: 100px; }
+        
+        /* Collapsible Accordion Box Layouts */
+        .accordion-header { background: #f1f5f9; padding: 10px 15px; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #334155;}
+        .accordion-header:hover { background: #e2e8f0; }
+        .accordion-content { border: 1px dashed var(--border-color); padding: 15px; margin-bottom: 15px; background: #fafafa; border-radius: 6px; display: none; }
+        .accordion-content.active { display: block; }
+
+        .creator-box { border: none; padding: 0; margin-bottom: 10px; background: transparent; }
+        
+        /* Quick Equation Toolbars */
+        .eq-toolbar { display: flex; flex-wrap: wrap; gap: 4px; margin: 5px 0 12px 0; background: #f8fafc; padding: 6px; border: 1px solid #e2e8f0; border-radius: 4px; }
+        .eq-btn { font-size: 11px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 3px; padding: 2px 6px; cursor: pointer; font-family: Courier, monospace; font-weight: bold; }
+        .eq-btn:hover { background: #f1f5f9; color: var(--accent-color); border-color: #94a3b8; }
+
+        .prompt-builder { background: #e9ecef; padding: 12px; border-radius: 6px; border: 1px solid #dee2e6; margin-bottom: 15px; }
+        .prompt-textarea { background: #fff; font-family: monospace; font-size: 11px; color: #333; cursor: not-allowed; width: 100%; padding: 6px; border: 1px solid var(--border-color); border-radius: 4px;}
+
+        /* Stack Item Manager Elements */
+        .manager-item { display: flex; align-items: center; justify-content: space-between; background: #f8f9fa; border: 1px solid #dee2e6; padding: 6px 10px; margin-bottom: 5px; border-radius: 4px; gap: 5px; }
+        .manager-text { font-size: 12px; font-weight: 500; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; flex-grow: 1; }
+        .sorting-arrows { display: flex; gap: 2px; }
+        .arrow-btn { background: #e2e8f0; border: none; cursor: pointer; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+        .arrow-btn:hover { background: #cbd5e1; }
+
+        /* --- Strict Continuous A4 Page Layout for Printing --- */
+        #print-document {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 12mm 15mm; 
+            color: #000;
+            font-family: "Times New Roman", Times, serif !important;
+        }
+
+        #print-document * { font-family: "Times New Roman", Times, serif !important; }
+
+        /* Header Layout Profiles */
+        .paper-header { text-align: center; font-weight: bold; line-height: 1.2; width: 100%; }
+        .paper-header h1 { 
+            margin: 0 0 4px 0; 
+            font-size: 14pt !important; 
+            text-transform: uppercase; 
+            font-weight: bold;
+            white-space: nowrap; 
+            letter-spacing: -0.3px; 
+        }
+        .paper-header h2 { margin: 0; font-size: 12pt !important; border: none; padding: 0; background: transparent; text-transform: uppercase; font-weight: bold; }
+        
+        .meta-grid { display: flex; justify-content: space-between; margin-top: 10px; font-weight: bold; font-size: 12pt !important; width: 100%; }
+        .divider { border-top: 2px solid #000; margin: 8px 0 15px 0; width: 100%; }
+
+        /* Inner Document Sheet Profiles */
+        .paper-content { font-size: 12pt !important; line-height: 1.4; width: 100%; }
+        .section-heading { text-align: center; font-weight: bold; margin: 20px 0 10px 0; text-transform: uppercase; font-size: 12pt !important; page-break-after: avoid; }
+        .comment-text { font-style: italic; font-size: 12pt !important; margin: 4px 0 12px 0; color: #000; page-break-after: avoid; }
+
+        .question-block { margin-bottom: 14px; page-break-inside: avoid; }
+        .question-item { display: flex; justify-content: space-between; align-items: flex-start; }
+        .qs-num { width: 35px; font-weight: bold; flex-shrink: 0; font-size: 12pt !important; }
+        .qs-main { flex-grow: 1; padding-right: 15px; font-size: 12pt !important; }
+        .qs-main div { outline: none; } 
+        .qs-marks { font-weight: bold; flex-shrink: 0; white-space: nowrap; font-size: 12pt !important; }
+        
+        /* Answer Keys Typography Controls */
+        .qs-answer-row { margin: 6px 0 4px 35px; font-style: italic; color: #cc0000; font-size: 11pt !important; line-height: 1.3; display: block;}
+        .qs-answer-row.hidden { display: none !important; }
+
+        /* Image Configurations */
+        .image-wrapper { margin-top: 6px; display: block; }
+        .qs-image, .ans-image { width: 150px; min-width: 30px; max-width: 100%; display: block; border: 1px dashed #333; }
+
+        /* Direct Sheet Inline Styling Indicators */
+        .qs-editable-body:hover, .section-heading:hover, .comment-text:hover, .qs-editable-ans:hover { background-color: #f0f7ff; cursor: text; border-radius: 2px; }
+        .inline-edit-mark { font-family: "Times New Roman", Times, serif !important; font-size: 12pt !important; border: none; border-bottom: 1px dashed var(--accent-color); background: transparent; padding: 0; width: 35px; text-align: center; font-weight: bold; color: #000; }
+        .inline-edit-mark:focus { background: #f0f7ff; outline: none; border-bottom: 1px solid var(--accent-color); }
+
+        /* Printer Driver Rules Override */
+        @media print {
+            @page { size: A4; margin: 12mm 15mm; }
+            body { background: none; display: block; height: auto; overflow: visible; }
+            #control-panel { display: none; } 
+            #preview-panel { width: 100%; height: auto; overflow: visible; padding: 0; background: none; display: block; }
+            #print-document { width: 100%; min-height: 0; box-shadow: none; margin: 0; padding: 0; float: none; display: block; }
+            .inline-edit-mark { border: none !important; background: transparent !important; }
+            .qs-editable-body:hover, .section-heading:hover, .comment-text:hover, .qs-editable-ans:hover { background: transparent !important; }
+            .qs-answer-row { color: #000 !important; } 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="control-panel">
+        <h2>Paper Parameters</h2>
+        <div class="form-group">
+            <label>School Heading (Locked to 1 Line)</label>
+            <input type="text" id="input-school" value="BASELIOS VIDYANIKETHAN SENIOR SECONDARY SCHOOL, VETTICKAL" oninput="updateHeader()">
+        </div>
+        <div class="form-group">
+            <label>Name of Exam</label>
+            <input type="text" id="input-exam" value="Periodic Assessment" oninput="updateHeader()">
+        </div>
+        
+        <div class="flex-row">
+            <div class="form-group">
+                <label>Subject</label>
+                <input type="text" id="input-subject" value="Physics" oninput="updateHeader()">
+            </div>
+            <div class="form-group">
+                <label>Max Time</label>
+                <input type="text" id="input-time" value="2 Hours" oninput="updateHeader()">
+            </div>
+            <div class="form-group">
+                <label>Max Marks</label>
+                <input type="text" id="input-marks" value="60" oninput="updateHeader()">
+            </div>
+        </div>
+
+        <div class="flex-row" style="margin-bottom: 8px;">
+            <button class="btn btn-secondary" style="background:#4b5563; flex: 1;" onclick="setGlobalAnswersVisibility(true)">👁️ Show Answers</button>
+            <button class="btn btn-secondary" style="background:#4b5563; flex: 1;" onclick="setGlobalAnswersVisibility(false)">🙈 Hide Answers</button>
+        </div>
+        <button class="btn" style="background:#28a745; width: 100%;" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
+
+        <div class="accordion-header" onclick="toggleAccordion('acc-method1')">
+            Method 1: Gemini AI Automation <span class="acc-icon">▶</span>
+        </div>
+        <div id="acc-method1" class="accordion-content">
+            <div class="prompt-builder">
+                <label style="color:#0056b3; font-weight:bold;">1. Customize AI Blueprint Prompt:</label>
+                <div class="flex-row">
+                    <div class="form-group">
+                        <label>Class</label>
+                        <input type="text" id="p-cfg-class" value="Class 11" oninput="regenerateAiPrompt()">
+                    </div>
+                    <div class="form-group">
+                        <label>Topic / Chapter</label>
+                        <input type="text" id="p-cfg-topic" value="Pascal's Law & Fluid Mechanics" oninput="regenerateAiPrompt()">
+                    </div>
+                </div>
+                <div class="flex-row" style="margin-top: 5px;">
+                    <div class="form-group">
+                        <label>Type of Questions</label>
+                        <input type="text" id="p-cfg-type" value="Short Answer and Numerical problems" oninput="regenerateAiPrompt()">
+                    </div>
+                    <div class="form-group">
+                        <label>Target Marks</label>
+                        <input type="text" id="p-cfg-marks" value="3 marks each" oninput="regenerateAiPrompt()">
+                    </div>
+                </div>
+                <textarea id="ai-system-prompt-text" class="prompt-textarea" style="margin-top:10px;" rows="5" readonly></textarea>
+                <button class="btn btn-secondary" style="margin-top:5px; font-size:11px; padding:4px;" onclick="copyAiPromptToClipboard()">📋 Copy Prompt for Gemini</button>
+            </div>
+
+            <div class="form-group">
+                <label>2. Paste Response Text lines from Gemini below:</label>
+                <textarea id="ai-paste-area" rows="4" placeholder="Paste generated text line strings here..."></textarea>
+            </div>
+            <div class="flex-row">
+                <button class="btn btn-secondary" onclick="importFromAI()">Parse & Append Questions</button>
+            </div>
+        </div>
+
+        <div class="accordion-header" onclick="toggleAccordion('acc-method2')">
+            Method 2: Manual Interactive Builder <span class="acc-icon">▶</span>
+        </div>
+        <div id="acc-method2" class="accordion-content">
+            <div class="flex-row" style="margin-bottom: 8px;">
+                <button class="btn btn-secondary" style="font-size:11px; padding:5px;" onclick="addSectionHeading()">+ Section Title</button>
+                <button class="btn btn-secondary" style="font-size:11px; padding:5px;" onclick="addCommentBlock()">+ Instruction Row</button>
+            </div>
+
+            <div class="creator-box">
+                <div class="form-group">
+                    <label>Question Text Body (Supports LaTeX standard Math/Chem syntax)</label>
+                    
+                    <div style="font-size: 11px; font-weight: bold; color: #555;">📐 Insert Mathematics Assistant:</div>
+                    <div class="eq-toolbar">
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\frac{a}{b}$')">Fraction</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\sqrt{x}$')">Root</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$x^2$')">Power</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\frac{dy}{dx}$')">Deriv</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\int_{a}^{b} x \\, dx$')">Integral</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\overset{\\longrightarrow}{\\!\\mathbf{F}}$')">Bold Vector</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\theta$')">theta</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\lambda$')">lambda</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$$\\begin{matrix} a & b \\\\ c & d \\end{matrix}$$')">Matrix Block</button>
+                    </div>
+
+                    <div style="font-size: 11px; font-weight: bold; color: #555; margin-top:5px;">🧪 Insert Chemical Equation Assistant:</div>
+                    <div class="eq-toolbar" style="border-color: #bbf7d0; background: #f0fdf4;">
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{H2O}$')">H₂O</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{CO2}$')">CO₂</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{2H2 + O2 -> 2H2O}$')">Reaction Line</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{A <=> B}$')">Equilibrium</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{v}$')">Precipitate (↓)</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{(^)}$')">Gas (↑)</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{(s)}$')">(s)</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{(aq)}$')">(aq)</button>
+                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\xrightarrow{\\Delta}$')">Heat (Δ)</button>
+                    </div>
+
+                    <textarea id="qs-text" rows="2" placeholder="Write question details or inject equations above..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Image for **Question** (Optional)</label>
+                    <input type="file" id="qs-image-input" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Answer / Solution Key Hint (Optional)</label>
+                    <textarea id="qs-ans" rows="2" placeholder="Write answers or inject equation tools from above..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Image for **Answer** (Optional)</label>
+                    <input type="file" id="ans-image-input" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Weight (Marks)</label>
+                    <input type="text" id="qs-mark" placeholder="e.g. 4" style="width:100px;">
+                </div>
+                
+                <button class="btn" style="background:#0284c7; width:100%;" onclick="addNewManualQuestion()">Insert into Paper Stack</button>
+            </div>
+        </div>
+
+        <h3>Active Elements Stack</h3>
+        <p style="font-size: 11px; color:#666; margin:0 0 8px 0;">Rearrange orders using arrows. Edit content inline directly on the preview sheet on the right.</p>
+        <div id="elements-manager"></div>
+    </div>
+
+    <div id="preview-panel">
+        <div id="print-document">
+            <div class="paper-header">
+                <h1 id="p-school">BASELIOS VIDYANIKETHAN SENIOR SECONDARY SCHOOL, VETTICKAL</h1>
+                <h2 id="p-exam">PERIODIC ASSESSMENT</h2>
+                <div class="meta-grid">
+                    <span id="p-time">Time: 2 Hours</span>
+                    <span id="p-subject">Subject: Physics</span>
+                    <span id="p-marks">Max Marks: 60</span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="paper-content" id="paper-elements-target"></div>
+        </div>
+    </div>
+
+    <script>
+        let paperElements = [
+            { type: 'section', text: 'Section A' },
+            { type: 'question', text: 'State Pascal\'s Law of fluid pressure transmission.', marks: '2', answer: 'Pascal\'s Law states that when pressure is applied to a fluid in a closed container, the pressure change is transmitted completely to every part of the fluid.', imgData: '', imgWidth: 150, ansImgData: '', ansImgWidth: 150 }
+        ];
+
+        let displayAnswersGlobal = true; 
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('.acc-icon');
+            
+            if(content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.innerText = "▶";
+            } else {
+                content.classList.add('active');
+                icon.innerText = "▼";
+            }
+        }
+
+        function insertSnippet(textareaId, snippet) {
+            const txtArea = document.getElementById(textareaId);
+            const startPos = txtArea.selectionStart;
+            const endPos = txtArea.selectionEnd;
+            const currentText = txtArea.value;
+
+            txtArea.value = currentText.substring(0, startPos) + snippet + currentText.substring(endPos, currentText.length);
+            txtArea.focus();
+            txtArea.selectionStart = startPos + snippet.length;
+            txtArea.selectionEnd = startPos + snippet.length;
+        }
+
+        function updateHeader() {
+            document.getElementById('p-school').innerText = document.getElementById('input-school').value;
+            document.getElementById('p-exam').innerText = document.getElementById('input-exam').value.toUpperCase();
+            document.getElementById('p-subject').innerText = "Subject: " + document.getElementById('input-subject').value;
+            document.getElementById('p-time').innerText = "Time: " + document.getElementById('input-time').value;
+            document.getElementById('p-marks').innerText = "Max Marks: " + document.getElementById('input-marks').value;
+        }
+
+        function regenerateAiPrompt() {
+            const cls = document.getElementById('p-cfg-class').value;
+            const top = document.getElementById('p-cfg-topic').value;
+            const type = document.getElementById('p-cfg-type').value;
+            const mrk = document.getElementById('p-cfg-marks').value;
+            const extractedMark = mrk.replace(/\D/g, "") || 'Marks';
+            
+            const promptStr = `Generate a comprehensive set of exam questions tailored for ${cls} students on the topic/chapter: "${top}".\n\n` +
+                              `Question Specifications:\n` +
+                              `- Question Type: ${type}\n` +
+                              `- Structural Value: ${mrk}\n\n` +
+                              `Output Guidelines:\n` +
+                              `Return only the question lines directly with NO chronological bullet prefixes. Append the score weight to the end of each question using square brackets exactly like this syntax pattern:\n` +
+                              `Question text structure goes here... [${extractedMark}]\n\n` +
+                              `Note: Format bold vectors cleanly using standard LaTeX notation ($\\overset{\\longrightarrow}{\\!\\mathbf{F}}$), standard expressions using ($...$), and chemical formulas using standard \\ce{...} syntax blocks.`;
+            
+            document.getElementById('ai-system-prompt-text').value = promptStr;
+        }
+
+        function copyAiPromptToClipboard() {
+            const promptArea = document.getElementById('ai-system-prompt-text');
+            promptArea.select();
+            document.execCommand('copy');
+            alert("Custom prompt copied successfully!");
+        }
+
+        function importFromAI() {
+            const rawText = document.getElementById('ai-paste-area').value;
+            if(!rawText.trim()) return;
+
+            const lines = rawText.split('\n');
+            lines.forEach(line => {
+                if(!line.trim()) return;
+                
+                let marksMatch = line.match(/\[([0-9\s\+]+)\]\s*$/) || line.match(/\(([0-9\s\+]+)\)\s*$/);
+                let marks = "";
+                let cleanedText = line;
+
+                if(marksMatch) {
+                    marks = marksMatch[1];
+                    cleanedText = line.replace(marksMatch[0], '').trim();
+                }
+                cleanedText = cleanedText.replace(/^\d+[\.\)\s\-:\s]+/, '').trim();
+
+                if(cleanedText.length > 0) {
+                    paperElements.push({ type: 'question', text: cleanedText, marks: marks, answer: '', imgData: '', imgWidth: 150, ansImgData: '', ansImgWidth: 150 });
+                }
+            });
+
+            document.getElementById('ai-paste-area').value = "";
+            renderPaper();
+        }
+
+        function addSectionHeading() {
+            const title = prompt("Enter Section Title Heading:");
+            if(title) { paperElements.push({ type: 'section', text: title }); renderPaper(); }
+        }
+
+        function addCommentBlock() {
+            const comment = prompt("Enter General Instructions:");
+            if(comment) { paperElements.push({ type: 'comment', text: comment }); renderPaper(); }
+        }
+
+        function addNewManualQuestion() {
+            const text = document.getElementById('qs-text').value;
+            const answer = document.getElementById('qs-ans').value;
+            const marks = document.getElementById('qs-mark').value;
+            const qsImgInput = document.getElementById('qs-image-input');
+            const ansImgInput = document.getElementById('ans-image-input');
+
+            if(!text.trim()) { alert("Question text line cannot be empty"); return; }
+
+            let elementObj = { type: 'question', text: text, marks: marks, answer: answer, imgData: '', imgWidth: 150, ansImgData: '', ansImgWidth: 150 };
+
+            const loadAnsImg = () => {
+                if(ansImgInput.files && ansImgInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        elementObj.ansImgData = e.target.result;
+                        paperElements.push(elementObj);
+                        resetManualForm(); renderPaper();
+                    };
+                    reader.readAsDataURL(ansImgInput.files[0]);
+                } else {
+                    paperElements.push(elementObj);
+                    resetManualForm(); renderPaper();
+                }
+            };
+
+            if(qsImgInput.files && qsImgInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    elementObj.imgData = e.target.result;
+                    loadAnsImg();
+                };
+                reader.readAsDataURL(qsImgInput.files[0]);
+            } else {
+                loadAnsImg();
+            }
+        }
+
+        function resetManualForm() {
+            document.getElementById('qs-text').value = '';
+            document.getElementById('qs-ans').value = '';
+            document.getElementById('qs-mark').value = '';
+            document.getElementById('qs-image-input').value = '';
+            document.getElementById('ans-image-input').value = '';
+        }
+
+        function updateInlineText(index, value) {
+            paperElements[index].text = value;
+            const managerLabel = document.querySelectorAll('.manager-text')[index];
+            if(managerLabel) {
+                let prefix = paperElements[index].type === 'section' ? '📂 [Sec] ' : (paperElements[index].type === 'comment' ? '📝 [Instr] ' : '❓ ');
+                managerLabel.innerText = prefix + value.replace(/<[^>]*>/g, '').substring(0, 30);
+            }
+        }
+
+        function updateInlineAnswer(index, value) {
+            paperElements[index].answer = value;
+        }
+
+        function updateInlineMark(index, value) {
+            paperElements[index].marks = value;
+        }
+
+        function changeImageSize(index, widthValue, imgType) {
+            if(imgType === 'qs') {
+                paperElements[index].imgWidth = widthValue;
+                const img = document.getElementById(`img-asset-${index}`);
+                if (img) img.style.width = widthValue + 'px';
+            } else {
+                paperElements[index].ansImgWidth = widthValue;
+                const img = document.getElementById(`ans-img-asset-${index}`);
+                if (img) img.style.width = widthValue + 'px';
+            }
+        }
+
+        function setGlobalAnswersVisibility(visibleState) {
+            displayAnswersGlobal = visibleState;
+            const answers = document.querySelectorAll('.qs-answer-row');
+            answers.forEach(ans => {
+                if(visibleState) ans.classList.remove('hidden');
+                else ans.classList.add('hidden');
+            });
+            if (visibleState && window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        }
+
+        function moveUp(index) {
+            if(index === 0) return;
+            let temp = paperElements[index];
+            paperElements[index] = paperElements[index - 1];
+            paperElements[index - 1] = temp;
+            renderPaper();
+        }
+
+        function moveDown(index) {
+            if(index === paperElements.length - 1) return;
+            let temp = paperElements[index];
+            paperElements[index] = paperElements[index + 1];
+            paperElements[index + 1] = temp;
+            renderPaper();
+        }
+
+        function removeElement(index) {
+            paperElements.splice(index, 1);
+            renderPaper();
+        }
+
+        function renderPaper() {
+            const target = document.getElementById('paper-elements-target');
+            const manager = document.getElementById('elements-manager');
+            
+            target.innerHTML = "";
+            manager.innerHTML = "";
+            
+            let questionCounter = 1;
+
+            paperElements.forEach((el, index) => {
+                let itemRow = document.createElement('div');
+                itemRow.className = "manager-item";
+                let textLbl = document.createElement('span');
+                textLbl.className = "manager-text";
+
+                if(el.type === 'section') {
+                    let secHeader = document.createElement('div');
+                    secHeader.className = "section-heading";
+                    secHeader.contentEditable = "true";
+                    secHeader.innerHTML = el.text;
+                    textLbl.innerText = `📂 [Sec] ${el.text}`;
+                    secHeader.addEventListener('blur', (e) => { updateInlineText(index, e.target.innerHTML); });
+                    target.appendChild(secHeader);
+                } 
+                else if (el.type === 'comment') {
+                    let commHeader = document.createElement('div');
+                    commHeader.className = "comment-text";
+                    commHeader.contentEditable = "true";
+                    commHeader.innerHTML = `* ${el.text}`;
+                    textLbl.innerText = `📝 [Instr] ${el.text}`;
+                    commHeader.addEventListener('blur', (e) => { 
+                        let cleanText = e.target.innerHTML.replace(/^\s*\*\s*/, ''); 
+                        updateInlineText(index, cleanText); 
+                    });
+                    target.appendChild(commHeader);
+                }
+                else if (el.type === 'question') {
+                    let imgHtml = el.imgData ? `
+                        <div class="image-wrapper">
+                            <img id="img-asset-${index}" class="qs-image" src="${el.imgData}" style="width: ${el.imgWidth}px;" />
+                        </div>` : '';
+
+                    let ansImgHtml = el.ansImgData ? `
+                        <div class="image-wrapper">
+                            <img id="ans-img-asset-${index}" class="ans-image" src="${el.ansImgData}" style="width: ${el.ansImgWidth}px;" />
+                        </div>` : '';
+                    
+                    let qBlock = document.createElement('div');
+                    qBlock.className = "question-block";
+                    
+                    let visibilityClass = displayAnswersGlobal ? '' : 'hidden';
+                    let answerBody = el.answer || `<span style="color:#aaa;">[Click to write answer hint]</span>`;
+                    
+                    qBlock.innerHTML = `
+                        <div class="question-item">
+                            <div class="qs-num">${questionCounter}.</div>
+                            <div class="qs-main">
+                                <div contenteditable="true" class="qs-editable-body">${el.text}</div>
+                                ${imgHtml}
+                            </div>
+                            <div class="qs-marks">(<input type="text" class="inline-edit-mark" value="${el.marks}" />)</div>
+                        </div>
+                        <div class="qs-answer-row ${visibilityClass}">
+                            <strong>Ans:</strong> <div contenteditable="true" class="qs-editable-ans" style="display:inline-block; outline:none; width:90%; vertical-align:top;">${answerBody}</div>
+                            ${ansImgHtml}
+                        </div>
+                    `;
+                    
+                    qBlock.querySelector('.qs-editable-body').addEventListener('blur', (e) => { 
+                        updateInlineText(index, e.target.innerHTML); 
+                    });
+                    qBlock.querySelector('.inline-edit-mark').addEventListener('input', (e) => { 
+                        updateInlineMark(index, e.target.value); 
+                    });
+                    qBlock.querySelector('.qs-editable-ans').addEventListener('blur', (e) => { 
+                        updateInlineAnswer(index, e.target.innerHTML); 
+                    });
+
+                    target.appendChild(qBlock);
+                    textLbl.innerText = `❓ Q${questionCounter}. ${el.text.replace(/<[^>]*>/g, '').substring(0,25)}`;
+                    questionCounter++;
+                }
+
+                // Append size adjustment sliders if images exist
+                let scaleSlidersHtml = "";
+                if (el.type === 'question') {
+                    if(el.imgData) {
+                        scaleSlidersHtml += `
+                            <div style="display:flex; align-items:center; gap:3px;">
+                                <span style="font-size:9px; color:#0284c7;">Q-Img:</span>
+                                <input type="range" min="40" max="400" value="${el.imgWidth}" style="width:50px;" oninput="changeImageSize(${index}, this.value, 'qs')">
+                            </div>`;
+                    }
+                    if(el.ansImgData) {
+                        scaleSlidersHtml += `
+                            <div style="display:flex; align-items:center; gap:3px; margin-left:4px;">
+                                <span style="font-size:9px; color:#cc0000;">A-Img:</span>
+                                <input type="range" min="40" max="400" value="${el.ansImgWidth}" style="width:50px;" oninput="changeImageSize(${index}, this.value, 'ans')">
+                            </div>`;
+                    }
+                }
+
+                itemRow.appendChild(textLbl);
+                itemRow.innerHTML += `
+                    <div style="display:flex; align-items:center; gap:4px;">
+                        ${scaleSlidersHtml}
+                        <div class="sorting-arrows">
+                            <button class="arrow-btn" onclick="moveUp(${index})">🔼</button>
+                            <button class="arrow-btn" onclick="moveDown(${index})">🔽</button>
+                        </div>
+                        <button class="btn-danger" onclick="removeElement(${index})">🗑️</button>
+                    </div>
+                `;
+                manager.appendChild(itemRow);
+            });
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([target]).catch(function (err) {
+                    console.log("MathJax Processing Intercept: " + err.message);
+                });
+            }
+        }
+
+        window.onload = function() {
+            regenerateAiPrompt();
+            updateHeader();
+            renderPaper();
+            toggleAccordion('acc-method1'); 
+        };
+    </script>
+</body>
+</html>
