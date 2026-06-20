@@ -180,8 +180,7 @@
 
     <div id="control-panel">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <h2 style="margin: 0; border: none; padding: 0;">QUESTION PAPER GENERATING</h2></br>
-            <h9 style="margin: 0; border: none; padding: 0;">By Akarsh Sajikumar M</h9>
+            <h2 style="margin: 0; border: none; padding: 0;">Paper Parameters</h2>
             <button class="btn btn-secondary" id="theme-toggle-btn" style="width: auto; padding: 6px 12px; margin: 0; font-size: 12px;" onclick="toggleSystemTheme()">🌓 Theme</button>
         </div>
         
@@ -210,10 +209,13 @@
         </div>
 
         <div class="flex-row" style="margin-bottom: 8px;">
-            <button class="btn btn-secondary" style="background:#475569; flex: 1;" onclick="setGlobalAnswersVisibility(true)">👁️ Show Answers</button>
-            <button class="btn btn-secondary" style="background:#475569; flex: 1;" onclick="setGlobalAnswersVisibility(false)">🙈 Hide Answers</button>
+            <button class="btn btn-secondary" style="background:#475569; flex: 1;" onclick="toggleAnswersGlobal()">👁️ Hide / Show Answers</button>
         </div>
-        <button class="btn" style="background:#10b981; width: 100%;" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <button class="btn" style="background:#10b981; width: 100%; margin-bottom: 8px;" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        
+        <a href="https://aash.app" target="_blank" style="text-decoration: none; display: block;">
+            <button class="btn" style="background:#f97316; width: 100%; font-weight: 700;">🚀 Practice JEE/NEET/UPSC/CTET PYQs on "AASH"</button>
+        </a>
 
         <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
 
@@ -529,14 +531,14 @@
             }
         }
 
-        function setGlobalAnswersVisibility(visibleState) {
-            displayAnswersGlobal = visibleState;
+        function toggleAnswersGlobal() {
+            displayAnswersGlobal = !displayAnswersGlobal;
             const answers = document.querySelectorAll('.qs-answer-row');
             answers.forEach(ans => {
-                if(visibleState) ans.classList.remove('hidden');
+                if(displayAnswersGlobal) ans.classList.remove('hidden');
                 else ans.classList.add('hidden');
             });
-            if (visibleState && window.MathJax && window.MathJax.typesetPromise) {
+            if (displayAnswersGlobal && window.MathJax && window.MathJax.typesetPromise) {
                 window.MathJax.typesetPromise();
             }
         }
