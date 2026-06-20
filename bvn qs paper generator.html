@@ -56,6 +56,7 @@
         #preview-panel { width: 60%; height: 100%; overflow-y: auto; padding: 40px 20px; background: var(--preview-bg); display: flex; justify-content: center; }
 
         h2, h3 { margin-top: 0; color: var(--text-main); font-weight: 700; border-bottom: 2px solid var(--bg-color); padding-bottom: 10px; }
+        h9 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group { margin-bottom: 14px; }
         label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 13px; color: var(--text-muted); }
         input, textarea, select { width: 100%; padding: 8px 12px; background: var(--input-bg); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; font-size: 13px; }
@@ -69,7 +70,7 @@
         .btn-danger { background: #ef4444; color: white; padding: 4px 8px; width: auto; margin: 0; border: none; border-radius: 4px; cursor: pointer; }
         .btn-danger:hover { background: #dc2626; }
 
-        .flex-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .flex-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
         .flex-row .form-group { flex: 1; min-width: 120px; }
         
         /* Premium Accordion Module */
@@ -94,6 +95,14 @@
         .sorting-arrows { display: flex; gap: 3px; }
         .arrow-btn { background: var(--panel-bg); color: var(--text-main); border: 1px solid var(--border-color); cursor: pointer; padding: 3px 6px; border-radius: 4px; font-size: 11px; }
         .arrow-btn:hover { background: var(--border-color); }
+
+        /* Sizing Arrow Counter Design Styles */
+        .size-counter-box { display: inline-flex; align-items: center; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 1px; gap: 2px; }
+        .size-btn { background: transparent; border: none; color: var(--text-main); cursor: pointer; padding: 2px 6px; font-size: 10px; font-weight: bold; border-radius: 3px; }
+        .size-btn:hover { background: var(--accent-color); color: white; }
+        .size-val { font-size: 10px; font-weight: 700; min-width: 32px; text-align: center; color: var(--text-main); font-family: monospace; }
+
+        .mobile-warning { font-size: 11px; font-weight: bold; color: #ea580c; margin-top: 4px; display: block; }
 
         /* --- Strict Continuous A4 Paper Layout Sheet (Stays crisp white for print accuracy) --- */
         #print-document {
@@ -179,7 +188,7 @@
 <body>
 
     <div id="control-panel">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 8px; flex-wrap: wrap;">
             <h2 style="margin: 0; border: none; padding: 0;">QS PAPER CREATOR</h2>
             <h9 style="margin: 0; border: none; padding: 0;">by AKARSH SAJIKUMAR M</h9>
             <button class="btn btn-secondary" id="theme-toggle-btn" style="width: auto; padding: 6px 12px; margin: 0; font-size: 12px;" onclick="toggleSystemTheme()">🌓 Theme</button>
@@ -210,7 +219,7 @@
         </div>
 
         <div class="flex-row" style="margin-bottom: 8px;">
-            <button class="btn btn-secondary" style="background:#475569; flex: 1;" onclick="toggleAnswersGlobal()">👁️ Hide / Show Answers</button>
+            <button class="btn btn-secondary" id="global-toggle-ans-btn" style="background:#475569; flex: 1;" onclick="toggleAnswersGlobal()">🙈 Hide Answers</button>
         </div>
         <button class="btn" style="background:#10b981; width: 100%; margin-bottom: 8px;" onclick="window.print()">🖨️ Print / Save as PDF</button>
         
@@ -295,7 +304,7 @@
                         <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{(^)}$')">Gas (↑)</button>
                         <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{(s)}$')">(s)</button>
                         <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\ce{(aq)}$')">(aq)</button>
-                        <button class="eq-btn" onclick="insertSnippet('qs-text', '$\\xrightarrow{\\Delta}$')">Heat (Δ)</button>
+                        <button class="btn eq-btn" onclick="insertSnippet('qs-text', '$\\xrightarrow{\\Delta}$')">Heat (Δ)</button>
                     </div>
 
                     <textarea id="qs-text" rows="2" placeholder="Write question details or inject equations above..."></textarea>
@@ -304,6 +313,7 @@
                 <div class="form-group">
                     <label>Image for **Question** (Optional)</label>
                     <input type="file" id="qs-image-input" accept="image/*">
+                    <span class="mobile-warning">⚠️ Mobile user? Use PC or enable "Desktop Site" mode if image loading fails.</span>
                 </div>
 
                 <div class="form-group">
@@ -314,6 +324,7 @@
                 <div class="form-group">
                     <label>Image for **Answer** (Optional)</label>
                     <input type="file" id="ans-image-input" accept="image/*">
+                    <span class="mobile-warning">⚠️ Mobile user? Use PC or enable "Desktop Site" mode if image loading fails.</span>
                 </div>
 
                 <div class="form-group">
@@ -520,25 +531,50 @@
             paperElements[index].marks = value;
         }
 
-        function changeImageSize(index, widthValue, imgType) {
+        // Complete Stable Button Sizing Step Calculation Engine
+        function stepImageSize(index, stepDirection, imgType) {
+            const currentSize = imgType === 'qs' ? (paperElements[index].imgWidth || 150) : (paperElements[index].ansImgWidth || 150);
+            
+            // Steps of 15px per click context changes
+            let newSize = stepDirection === 'up' ? (currentSize + 15) : (currentSize - 15);
+            
+            // Constrain constraints bounds checking
+            if(newSize < 30) newSize = 30;
+            if(newSize > 500) newSize = 500;
+
+            const percentageValue = Math.round((newSize / 150) * 100) + '%';
+
             if(imgType === 'qs') {
-                paperElements[index].imgWidth = widthValue;
+                paperElements[index].imgWidth = newSize;
                 const img = document.getElementById(`img-asset-${index}`);
-                if (img) img.style.width = widthValue + 'px';
+                if (img) img.style.width = newSize + 'px';
+                const label = document.getElementById(`lbl-qs-sz-${index}`);
+                if (label) label.innerText = percentageValue;
             } else {
-                paperElements[index].ansImgWidth = widthValue;
+                paperElements[index].ansImgWidth = newSize;
                 const img = document.getElementById(`ans-img-asset-${index}`);
-                if (img) img.style.width = widthValue + 'px';
+                if (img) img.style.width = newSize + 'px';
+                const label = document.getElementById(`lbl-ans-sz-${index}`);
+                if (label) label.innerText = percentageValue;
             }
         }
 
         function toggleAnswersGlobal() {
             displayAnswersGlobal = !displayAnswersGlobal;
             const answers = document.querySelectorAll('.qs-answer-row');
+            const toggleBtn = document.getElementById('global-toggle-ans-btn');
+            
             answers.forEach(ans => {
                 if(displayAnswersGlobal) ans.classList.remove('hidden');
                 else ans.classList.add('hidden');
             });
+
+            if(displayAnswersGlobal) {
+                toggleBtn.innerText = "🙈 Hide Answers";
+            } else {
+                toggleBtn.innerText = "👁️ Show Answers";
+            }
+
             if (displayAnswersGlobal && window.MathJax && window.MathJax.typesetPromise) {
                 window.MathJax.typesetPromise();
             }
@@ -604,12 +640,12 @@
                 else if (el.type === 'question') {
                     let imgHtml = el.imgData ? `
                         <div class="image-wrapper">
-                            <img id="img-asset-${index}" class="qs-image" src="${el.imgData}" style="width: ${el.imgWidth}px;" />
+                            <img id="img-asset-${index}" class="qs-image" src="${el.imgData}" style="width: ${el.imgWidth || 150}px;" />
                         </div>` : '';
 
                     let ansImgHtml = el.ansImgData ? `
                         <div class="image-wrapper">
-                            <img id="ans-img-asset-${index}" class="ans-image" src="${el.ansImgData}" style="width: ${el.ansImgWidth}px;" />
+                            <img id="ans-img-asset-${index}" class="ans-image" src="${el.ansImgData}" style="width: ${el.ansImgWidth || 150}px;" />
                         </div>` : '';
                     
                     let qBlock = document.createElement('div');
@@ -651,17 +687,23 @@
                 let scaleSlidersHtml = "";
                 if (el.type === 'question') {
                     if(el.imgData) {
+                        const initQsPct = Math.round(((el.imgWidth || 150) / 150) * 100) + '%';
                         scaleSlidersHtml += `
-                            <div style="display:flex; align-items:center; gap:3px;">
-                                <span style="font-size:9px; color:#0284c7;">Q:</span>
-                                <input type="range" min="40" max="400" value="${el.imgWidth}" style="width:40px;" oninput="changeImageSize(${index}, this.value, 'qs')">
+                            <div class="size-counter-box">
+                                <span style="font-size:9px; font-weight:bold; padding-left:3px; color:#0284c7;">Q:</span>
+                                <button class="size-btn" onclick="stepImageSize(${index}, 'down', 'qs')">◀</button>
+                                <span class="size-val" id="lbl-qs-sz-${index}">${initQsPct}</span>
+                                <button class="size-btn" onclick="stepImageSize(${index}, 'up', 'qs')">▶</button>
                             </div>`;
                     }
                     if(el.ansImgData) {
+                        const initAnsPct = Math.round(((el.ansImgWidth || 150) / 150) * 100) + '%';
                         scaleSlidersHtml += `
-                            <div style="display:flex; align-items:center; gap:3px; margin-left:4px;">
-                                <span style="font-size:9px; color:#cc0000;">A:</span>
-                                <input type="range" min="40" max="400" value="${el.ansImgWidth}" style="width:40px;" oninput="changeImageSize(${index}, this.value, 'ans')">
+                            <div class="size-counter-box" style="margin-left:2px;">
+                                <span style="font-size:9px; font-weight:bold; padding-left:3px; color:#cc0000;">A:</span>
+                                <button class="size-btn" onclick="stepImageSize(${index}, 'down', 'ans')">◀</button>
+                                <span class="size-val" id="lbl-ans-sz-${index}">${initAnsPct}</span>
+                                <button class="size-btn" onclick="stepImageSize(${index}, 'up', 'ans')">▶</button>
                             </div>`;
                     }
                 }
