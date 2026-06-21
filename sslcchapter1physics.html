@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Physics - Sound Waves Question Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #0f172a;     /* Deep Navy Slate */
+            --accent-blue: #0ea5e9;      /* Sky Blue Accent */
+            --text-main: #1e293b;        /* Slate 800 */
+            --text-muted: #64748b;       /* Slate 500 */
+            --bg-gradient-start: #f8fafc;
+            --bg-gradient-end: #e2e8f0;
+            
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+            --card-glow: rgba(14, 165, 233, 0.15);
+        }
+
+        body {
+            font-family: 'Anek Malayalam', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        /* Glassmorphic Header */
+        header {
+            text-align: center;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .brand-logo {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header h2 {
+            color: #94a3b8;
+            margin: 8px 0 0 0;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .author {
+            margin-top: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+            display: inline-block;
+            padding: 6px 30px;
+            border-radius: 30px;
+            border-top: 1px solid rgba(14, 165, 233, 0.2);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 28px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .instruction-box {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: var(--glass-shadow);
+            font-weight: 500;
+        }
+
+        /* Glassmorphic Question Cards */
+        .question-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .question-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 12px 20px rgba(14, 165, 233, 0.05), var(--glass-shadow);
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .malayalam-text {
+            color: var(--text-muted);
+            display: block;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-top: 6px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 620px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option {
+            background: rgba(248, 250, 252, 0.6);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .question-card:hover .option {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Modern Toggle Buttons */
+        .btn-toggle {
+            background: var(--primary-dark);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-toggle:hover {
+            background: var(--accent-blue);
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Interactive Dynamic Reveal Panels */
+        .answer-panel {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(240, 253, 250, 0.75);
+            border-left: 4px solid #0d9488;
+            border-radius: 14px;
+            animation: slideDown 0.3s ease-out;
+            border-top: 1px solid rgba(255,255,255,0.5);
+            border-right: 1px solid rgba(255,255,255,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .answer-panel.show {
+            display: block;
+        }
+
+        .ans-title {
+            font-weight: 800;
+            color: #115e59;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation {
+            font-size: 0.98rem;
+            color: #334155;
+            font-weight: 500;
+        }
+        
+        .explanation strong {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <img class="brand-logo" src="https://aash.app/static/media/wl_client_images/b6ada47b29834a488f66cab0ae4bf840.png" alt="De AASH logo">
+        <h1>Class 10 Physics</h1>
+        <h2>Chapter 1: Sound Waves Question Bank</h2>
+        <div class="author">AKARSH SAJIKUMAR M</div>
+    </header>
+
+    <h2 class="section-title">Part A: Multiple Choice Questions (MCQs)</h2>
+
+    <div class="question-card">
+        <div class="question-text">
+            1. Which type of wave is a sound wave in air?
+            <span class="malayalam-text">(വായുവിലൂടെയുള്ള ശബ്ദതരംഗം ഏത് തരം തരംഗമാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Transverse wave (അനുപ്രസ്ഥ തരംഗം)</div>
+            <div class="option">(b) Electromagnetic wave (വൈദ്യുതകാന്തിക തരംഗം)</div>
+            <div class="option">(c) Longitudinal wave (അനുദൈർഘ്യ തരംഗം)</div>
+            <div class="option">(d) Light wave (പ്രകാശ തരംഗം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Longitudinal wave (അനുദൈർഘ്യ തരംഗം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> In longitudinal waves, particles of the medium vibrate parallel to the direction of wave propagation.<br>
+                <strong>വിശദീകരണം:</strong> അനുദൈർഘ്യ തരംഗങ്ങളിൽ കണികകൾ തരംഗ ഗതിക്ക് സമാന്തരമായി കമ്പനം ചെയ്യുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            2. What is the SI unit of frequency?
+            <span class="malayalam-text">(ആവൃത്തിയുടെ SI യൂണിറ്റ് ഏതാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Metre (മീറ്റർ)</div>
+            <div class="option">(b) Second (സക്കൻഡ്)</div>
+            <div class="option">(c) Hertz (ഹെർട്സ്)</div>
+            <div class="option">(d) Joule (ജൂൾ)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Hertz (ഹെർട്സ്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Frequency is the number of oscillations completed in one second, measured in Hertz (Hz).<br>
+                <strong>വിശദീകരണം:</strong> ഒരു സെക്കൻഡിൽ പൂർത്തിയാക്കുന്ന ദോലനങ്ങളുടെ എണ്ണമാണ് ആവൃത്തി. ഇത് ഹെർട്‌സിൽ (Hz) അളക്കുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            3. What is the relationship between wave speed (<i>v</i>), frequency (<i>f</i>), and wavelength (&lambda;)?
+            <span class="malayalam-text">(പ്രവേഗം (<i>v</i>), ആവൃത്തി (<i>f</i>), തരംഗദൈർഘ്യം (&lambda;) എന്നിവ തമ്മിലുള്ള ബന്ധം എന്താണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) <i>v = f / &lambda;</i></div>
+            <div class="option">(b) <i>v = f &times; &lambda;</i></div>
+            <div class="option">(c) <i>v = &lambda; / f</i></div>
+            <div class="option">(d) <i>v = f + &lambda;</i></div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) <i>v = f &times; &lambda;</i></div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The speed of a wave is the product of its frequency and wavelength.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു തരംഗത്തിന്റെ വേഗത എന്നത് അതിന്റെ ആവൃത്തിയുടെയും തരംഗദൈർഘ്യത്തിന്റെയും ഗുണനഫലമാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            4. To hear a clear echo, what is the minimum distance required to the reflecting surface (if speed = 340 m/s)?
+            <span class="malayalam-text">(വ്യക്തമായ പ്രതിധ്വനി കേൾക്കാൻ പ്രതിഫലന ഉപരിതലത്തിലേക്കുള്ള ഏറ്റവും കുറഞ്ഞ ദൂരം എത്രയായിരിക്കണം?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) 34 m</div>
+            <div class="option">(b) 10 m</div>
+            <div class="option">(c) 17 m</div>
+            <div class="option">(d) 340 m</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) 17 m</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> To overcome the persistence of hearing (0.1s), the sound must travel a total distance of 34m (340 &times; 0.1), making the distance to the wall 17m.<br>
+                <strong>വിശദീകരണം:</strong> ശ്രവണ സ്ഥിരത (0.1s) മറികടക്കാൻ ശബ്ദം ആകെ 34 മീറ്റർ സഞ്ചരിക്കണം. അതിനാൽ ഭിത്തിയിലേക്കുള്ള ദൂരം 17 മീറ്റർ ആയിരിക്കണം.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            5. What happens to the frequency of a simple pendulum when its length increases?
+            <span class="malayalam-text">(ഒരു ലഘുലോലകത്തിന്റെ നീളം കൂടുമ്പോൾ അതിന്റെ ആവൃത്തിക്ക് എന്ത് സംഭവിക്കുന്നു?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Increases (കൂടുന്നു)</div>
+            <div class="option">(b) Decreases (കുറയുന്നു)</div>
+            <div class="option">(c) Remains the same (മാറ്റമില്ല)</div>
+            <div class="option">(d) Becomes zero (പൂജ്യമാകുന്നു)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) Decreases (കുറയുന്നു)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Frequency and length of a pendulum are inversely related; as length increases, frequency decreases.<br>
+                <strong>വിശദീകരണം:</strong> ലോലകത്തിന്റെ നീളം കൂടുമ്പോൾ ആവൃത്തി കുറയുന്നു. ഇവ വിപരീത അനുപാതത്തിലാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            6. Which of the following consists of crests and troughs?
+            <span class="malayalam-text">(താഴെ പറയുന്നവയിൽ ശൃംഗങ്ങളും ഗർത്തങ്ങളും അടങ്ങിയിരിക്കുന്നത് ഏതിലാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Longitudinal wave (അനുദൈർഘ്യ തരംഗം)</div>
+            <div class="option">(b) Transverse wave (അനുപ്രസ്ഥ തരംഗം)</div>
+            <div class="option">(c) Sound wave (ശബ്ദ തരംഗം)</div>
+            <div class="option">(d) Ultrasonic wave (അൾട്രാസോണിക് തരംഗം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) Transverse wave (അനുപ്രസ്ഥ തരംഗം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Transverse waves, like light or ripples on water, are characterized by crests and troughs.<br>
+                <strong>വിശദീകരണം:</strong> പ്രകാശം പോലുള്ള അനുപ്രസ്ഥ തരംഗങ്ങൾ ശൃംഗങ്ങളും ഗർത്തങ്ങളും ചേർന്നതാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            7. What is the audible frequency range for humans?
+            <span class="malayalam-text">(മനുഷ്യന് കേൾക്കാവുന്ന ശബ്ദത്തിന്റെ ആവൃത്തി പരിധി എത്രയാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Below 20 Hz</div>
+            <div class="option">(b) Above 20,000 Hz</div>
+            <div class="option">(c) 20 Hz to 20,000 Hz</div>
+            <div class="option">(d) 100 Hz to 1000 Hz</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) 20 Hz to 20,000 Hz</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> A normal person can hear sounds with frequencies between 20 Hz and 20,000 Hz.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു സാധാരണ മനുഷ്യന് 20 Hz മുതൽ 20,000 Hz വരെയുള്ള ശബ്ദങ്ങൾ മാത്രമേ കേൾക്കാൻ കഴിയൂ.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            8. Phenomenon where an object vibrates with maximum amplitude due to an external force of matching frequency is called:
+            <span class="malayalam-text">(പുറമെ നിന്നുള്ള ആവൃത്തി ഒരു വസ്തുവിന്റെ സ്വാഭാവിക ആവൃത്തിക്ക് തുല്യമാകുമ്പോൾ ആ വസ്തു പരമാവധി ആയാമത്തിൽ കമ്പനം ചെയ്യുന്ന പ്രതിഭാസം:)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Echo (പ്രതിധ്വനി)</div>
+            <div class="option">(b) Persistence of hearing (ശ്രവണ സ്ഥിരത)</div>
+            <div class="option">(c) Resonance (അനുനാദം)</div>
+            <div class="option">(d) Forced vibration (പ്രചോദിത കമ്പനം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Resonance (അനുനാദം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Resonance occurs when the external frequency matches the natural frequency of an object.<br>
+                <strong>വിശദീകരണം:</strong> ബാഹ്യ ആവൃത്തി സ്വാഭാവിക ആവൃത്തിക്ക് തുല്യമാകുമ്പോൾ അനുനാദം ഉണ്ടാകുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            9. What are sounds with frequency below 20 Hz called?
+            <span class="malayalam-text">(20 Hz-ൽ താഴെ ആവൃത്തിയുള്ള ശബ്ദങ്ങളെ എന്ത് വിളിക്കുന്നു?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Infrasonic (ഇൻഫ്രാസോണിക്)</div>
+            <div class="option">(b) Ultrasonic (അൾട്രാസോണിക്)</div>
+            <div class="option">(c) Audible (ശ്രാവ്യമായത്)</div>
+            <div class="option">(d) Supersonic (സൂപ്പർസോണിക്)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a) Infrasonic (ഇൻഫ്രാസോണിക്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Sounds with frequencies below the lower limit of human hearing (20 Hz) are infrasonic.<br>
+                <strong>വിശദീകരണം:</strong> മനുഷ്യന്റെ ശ്രവണ പരിധിക്ക് താഴെയുള്ള (20 Hz-ൽ കുറവ്) ശബ്ദങ്ങളാണ് ഇൻഫ്രാസോണിക്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            10. Ultrasonic waves have a frequency:
+            <span class="malayalam-text">(അൾട്രാസോണിക് തരംഗങ്ങളുടെ ആവൃത്തി എത്രയാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Less than 20 Hz</div>
+            <div class="option">(b) Exactly 20,000 Hz</div>
+            <div class="option">(c) Greater than 20,000 Hz</div>
+            <div class="option">(d) Between 20 Hz and 200 Hz</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Greater than 20,000 Hz</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Sound with a frequency above the upper limit of human hearing (20,000 Hz) is ultrasonic.<br>
+                <strong>വിശദീകരണം:</strong> 20,000 Hz-ന് മുകളിൽ ആവൃത്തിയുള്ള ശബ്ദങ്ങളാണ് അൾട്രാസോണിക്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            11. The time taken for one complete oscillation is called:
+            <span class="malayalam-text">(ഒരു പൂർണ്ണ ദോലനത്തിന് എടുക്കുന്ന സമയം അറിയപ്പെടുന്നത്:)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Frequency (ആവൃത്തി)</div>
+            <div class="option">(b) Amplitude (ആയാമം)</div>
+            <div class="option">(c) Period (കാലയളവ്)</div>
+            <div class="option">(d) Wavelength (തരംഗദൈർഘ്യം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Period (കാലയളവ്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The period (T) is the time required for one full cycle of oscillation.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു പൂർണ്ണ ദോലനം പൂർത്തിയാക്കാൻ എടുക്കുന്ന സമയമാണ് കാലയളവ് (T).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            12. Which device is used to find the depth of the sea using ultrasonic waves?
+            <span class="malayalam-text">(അൾട്രാസോണിക് തരംഗങ്ങൾ ഉപയോഗിച്ച് കടലിന്റെ ആഴം അളക്കാൻ ഉപയോഗിക്കുന്ന ഉപകരണം?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Microscope (മൈക്രോസ്കോപ്പ്)</div>
+            <div class="option">(b) Telescope (ടെലിസ്കോപ്പ്)</div>
+            <div class="option">(c) SONAR (സോണാർ)</div>
+            <div class="option">(d) Voltmeter (വോൾട്ട്മീറ്റർ)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) SONAR (സോണാർ)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> SONAR uses ultrasonic sound to measure distances under water.<br>
+                <strong>വിശദീകരണം:</strong> കടലിനടിയിലെ ദൂരം അളക്കാൻ സോണാർ അൾട്രാസോണിക് ശബ്ദം ഉപയോഗിക്കുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            13. What is the distance between two adjacent compressions in a longitudinal wave?
+            <span class="malayalam-text">(ഒരു അനുദൈർഘ്യ തരംഗത്തിൽ അടുത്തടുത്ത രണ്ട് ഘനീഭവനങ്ങൾ തമ്മിലുള്ള ദൂരം എന്താണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Amplitude (ആയാമം)</div>
+            <div class="option">(b) Wavelength (തരംഗദൈർഘ്യം)</div>
+            <div class="option">(c) Speed (പ്രവേഗം)</div>
+            <div class="option">(d) Frequency (ആവൃത്തി)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) Wavelength (തരംഗദൈർഘ്യം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Wavelength is defined as the distance between two adjacent compressions or rarefactions.<br>
+                <strong>വിശദീകരണം:</strong> അടുത്തടുത്ത രണ്ട് ഘനീഭവനങ്ങൾ അല്ലെങ്കിൽ വിരളനങ്ങൾ തമ്മിലുള്ള ദൂരമാണ് തരംഗദൈർഘ്യം.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            14. If frequency is 2 Hz and wavelength is 40 m, find the wave speed.
+            <span class="malayalam-text">(ആവൃത്തി 2 Hz-ഉം തരംഗദൈർഘ്യം 40 m-ഉം ആണെങ്കിൽ തരംഗത്തിന്റെ വേഗത കണ്ടെത്തുക.)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) 20 m/s</div>
+            <div class="option">(b) 80 m/s</div>
+            <div class="option">(c) 42 m/s</div>
+            <div class="option">(d) 0.05 m/s</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) 80 m/s</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Speed = Frequency &times; Wavelength (2 &times; 40 = 80 m/s).<br>
+                <strong>വിശദീകരണം:</strong> വേഗത = ആവൃത്തി &times; തരംഗദൈർഘ്യം (2 &times; 40 = 80 m/s).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            15. Persistence of hearing for a normal human ear is:
+            <span class="malayalam-text">(ഒരു സാധാരണ മനുഷ്യന്റെ ശ്രവണ സ്ഥിരത എത്രയാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) 1 second</div>
+            <div class="option">(b) 0.1 second</div>
+            <div class="option">(c) 0.01 second</div>
+            <div class="option">(d) 10 seconds</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) 0.1 second</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The sensation of sound persists in the ear for about 0.1 seconds after the source stops.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു ശബ്ദം നിന്നതിനുശേഷവും 0.1 സെക്കൻഡ് നേരത്തേക്ക് ആ അനുഭവം ചെവിയിൽ നിലനിൽക്കും.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            16. Which wave requires a medium for its propagation?
+            <span class="malayalam-text">(സഞ്ചരിക്കാൻ ഒരു മാധ്യമം ആവശ്യമായ തരംഗം ഏതാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Light wave (പ്രകാശ തരംഗം)</div>
+            <div class="option">(b) Sound wave (ശബ്ദ തരംഗം)</div>
+            <div class="option">(c) X-rays (എക്സ്-റേ)</div>
+            <div class="option">(d) Radio waves (റേഡിയോ തരംഗങ്ങൾ)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) Sound wave (ശബ്ദ തരംഗം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Mechanical waves like sound require a solid, liquid, or gas to travel.<br>
+                <strong>വിശദീകരണം:</strong> ശബ്ദം പോലുള്ള യാന്ത്രിക തരംഗങ്ങൾക്ക് സഞ്ചരിക്കാൻ മാധ്യമം ആവശ്യമാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            17. What is the maximum displacement from the equilibrium position called?
+            <span class="malayalam-text">(സാമ്യാവസ്ഥയിൽ നിന്നുള്ള പരമാവധി സ്ഥാനാന്തരം അറിയപ്പെടുന്നത്:)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Wavelength (തരംഗദൈർഘ്യം)</div>
+            <div class="option">(b) Frequency (ആവൃത്തി)</div>
+            <div class="option">(c) Amplitude (ആയാമം)</div>
+            <div class="option">(d) Period (കാലയളവ്)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Amplitude (ആയാമം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Amplitude is the maximum displacement of a vibrating particle from its mean position.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു കണിക അതിന്റെ മധ്യസ്ഥാനത്ത് നിന്നുള്ള പരമാവധി അകലത്തെയാണ് ആയാമം എന്ന് വിളിക്കുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            18. If frequency is 50 Hz, what is its period (T)?
+            <span class="malayalam-text">(ആവൃത്തി 50 Hz ആണെങ്കിൽ കാലയളവ് (T) എത്രയാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) 50 s</div>
+            <div class="option">(b) 0.5 s</div>
+            <div class="option">(c) 0.02 s</div>
+            <div class="option">(d) 2 s</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) 0.02 s</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> T = 1 / f; hence 1 / 50 = 0.02 s.<br>
+                <strong>വിശദീകരണം:</strong> T = 1 / f ആയതിനാൽ 1 / 50 = 0.02 സെക്കൻഡ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            19. Which animal can hear ultrasonic sounds up to 120 kHz?
+            <span class="malayalam-text">(120 kHz വരെ ആവൃത്തിയുള്ള അൾട്രാസോണിക് ശബ്ദങ്ങൾ കേൾക്കാൻ കഴിയുന്ന ജീവി?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Human (മനുഷ്യൻ)</div>
+            <div class="option">(b) Elephant (ആന)</div>
+            <div class="option">(c) Bat (വവ്വാല്)</div>
+            <div class="option">(d) Whale (തിമിംഗലം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c) Bat (വവ്വാല്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Bats use high-frequency ultrasonic waves for navigation.<br>
+                <strong>വിശദീകരണം:</strong> വവ്വാലുകൾക്ക് 120 kHz വരെയുള്ള ഉയർന്ന ആവൃത്തിയുള്ള ശബ്ദങ്ങൾ കേൾക്കാൻ കഴിക്കും.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            20. In which medium does sound travel fastest?
+            <span class="malayalam-text">(ഏത് മാധ്യമത്തിലാണ് ശബ്ദം ഏറ്റവും വേഗത്തിൽ സഞ്ചരിക്കുന്നത്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Vacuum (ശൂന്യത)</div>
+            <div class="option">(b) Air (വായു)</div>
+            <div class="option">(c) Water (വെള്ളം)</div>
+            <div class="option">(d) Steel (ഉരുക്ക്)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d) Steel (ഉരുക്ക്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Sound travels fastest in solids because particles are closely packed.<br>
+                <strong>വിശദീകരണം:</strong> തന്മാത്രകൾ അടുത്തിരിക്കുന്നതിനാൽ ഖരപദാർത്ഥങ്ങളിൽ ശബ്ദം വേഗത്തിൽ സഞ്ചരിക്കുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            21. A simple pendulum completes 10 oscillations in 5 seconds. What is its frequency?
+            <span class="malayalam-text">(ഒരു ലഘുലോലകം 5 സെക്കൻഡിൽ 10 ദോലനങ്ങൾ പൂർത്തിയാക്കുന്നു. അതിന്റെ ആവൃത്തി എത്ര?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) 2 Hz</div>
+            <div class="option">(b) 0.5 Hz</div>
+            <div class="option">(c) 50 Hz</div>
+            <div class="option">(d) 5 Hz</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a) 2 Hz</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Frequency = Total oscillations / Time (10 / 5 = 2 Hz).<br>
+                <strong>വിശദീകരണം:</strong> ആവൃത്തി = ആകെ ദോലനങ്ങൾ / സമയം (10 / 5 = 2 Hz).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            22. Which wave is formed by compressions and rarefactions?
+            <span class="malayalam-text">(ഘനീഭവനങ്ങളും വിരളനങ്ങളും വഴി രൂപപ്പെടുന്ന തരംഗം ഏതാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Light wave (പ്രകാശ തരംഗം)</div>
+            <div class="option">(b) Longitudinal wave (അനുദൈർഘ്യ തരംഗം)</div>
+            <div class="option">(c) Transverse wave (അനുപ്രസ്ഥ തരംഗം)</div>
+            <div class="option">(d) Radio wave (റേഡിയോ തരംഗം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) Longitudinal wave (അനുദൈർഘ്യ തരംഗം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Longitudinal waves travel as alternating regions of high and low pressure.<br>
+                <strong>വിശദീകരണം:</strong> അനുദൈർഘ്യ തരംഗങ്ങൾ ഘനീഭവനങ്ങളായും വിരളനങ്ങളായും സഞ്ചരിക്കുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            23. Wavelength is usually measured in:
+            <span class="malayalam-text">(തരംഗദൈർഘ്യം സാധാരണയായി അളക്കുന്നത് എന്തിലാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Hertz</div>
+            <div class="option">(b) Metre</div>
+            <div class="option">(c) Seconds</div>
+            <div class="option">(d) Kilograms</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) Metre</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Since wavelength is a distance, its SI unit is the metre.<br>
+                <strong>വിശദീകരണം:</strong> തരംഗദൈർഘ്യം ഒരു ദൂരമായതിനാൽ അതിന്റെ യൂണിറ്റ് മീറ്ററാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            24. The product of Frequency (<i>f</i>) and Period (<i>T</i>) is:
+            <span class="malayalam-text">(ആവൃത്തിയുടെയും (<i>f</i>) കാലയളവിന്റെയും (<i>T</i>) ഗുണനഫലം എത്രയാണ്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) 0</div>
+            <div class="option">(b) 1</div>
+            <div class="option">(c) Infinity</div>
+            <div class="option">(d) 100</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b) 1</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Since f = 1/T, their product f &times; T is always 1.<br>
+                <strong>വിശദീകരണം:</strong> f = 1/T ആയതിനാൽ f &times; T = 1 ആയിരിക്കും.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            25. Natural frequency of an object does NOT depend on:
+            <span class="malayalam-text">(ഒരു വസ്തുവിന്റെ സ്വാഭാവിക ആവൃത്തി എന്തിനെയാണ് ആശ്രയിക്കാത്തത്?)</span>
+        </div>
+        <div class="options-grid">
+            <div class="option">(a) Size (വലിപ്പം)</div>
+            <div class="option">(b) Material (നിർമ്മിച്ചിരിക്കുന്ന പദാർത്ഥം)</div>
+            <div class="option">(c) Elasticity (ഇലാസ്തികത)</div>
+            <div class="option">(d) Amplitude of vibration (കമ്പനത്തിന്റെ ആയാമം)</div>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d) Amplitude of vibration (കമ്പനത്തിന്റെ ആയാമം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Natural frequency is determined by physical properties like size and material, not how hard it is hit.<br>
+                <strong>വിശദീകരണം:</strong> സ്വാഭാവിക ആവൃത്തി വസ്തുവിന്റെ ഭൗതിക ഗുണങ്ങളെ ആശ്രയിച്ചിരിക്കുന്നു, ആയാമത്തെയല്ല.
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Part B: Fill In The Blanks</h2>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 1] The periodic motion in which an object moves to and fro about its equilibrium position is called ________.
+            <span class="malayalam-text">(ഒരു വസ്തു അതിന്റെ ആധാര സ്ഥാനത്തെ അടിസ്ഥാനമാക്കി അങ്ങോട്ടും ഇങ്ങോട്ടും കൃത്യമായ സമയക്രമത്തിൽ ചലിക്കുന്നതിനെ ________ എന്ന് പറയുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Oscillation (ദോലനം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Oscillation occurs at regular intervals of time.<br>
+                <strong>Similar Question:</strong> What is the initial position of a swing before it starts moving? (Answer: Equilibrium position)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 2] The SI unit used to measure the frequency of a wave is ________.
+            <span class="malayalam-text">(തരംഗത്തിന്റെ ആവൃത്തി അളക്കാൻ ഉപയോഗിക്കുന്ന SI യൂണിറ്റ് ________ ആണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Hertz / Hz (ഹെർട്സ്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Frequency is the number of oscillations per second.<br>
+                <strong>Similar Question:</strong> What does 1 Hz represent? (Answer: One oscillation per second)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 3] In a longitudinal wave, the regions of high pressure are known as ________.
+            <span class="malayalam-text">(ഒരു അനുദൈർഘ്യ തരംഗത്തിൽ മർദ്ദം കൂടിയ ഭാഗങ്ങളെ ________ എന്ന് വിളിക്കുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Compressions (ഘനീഭവനങ്ങൾ)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Longitudinal waves consist of alternate compressions and rarefactions.<br>
+                <strong>Similar Question:</strong> What are high-pressure regions in a sound wave called? (Answer: Compressions)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 4] The formula relating wave speed (<i>v</i>), frequency (<i>f</i>), and wavelength (&lambda;) is ________.
+            <span class="malayalam-text">(പ്രവേഗം (<i>v</i>), ആവൃത്തി (<i>f</i>), തരംഗദൈർഘ്യം (&lambda;) എന്നിവ തമ്മിലുള്ള ബന്ധം സൂചിപ്പിക്കുന്ന സമവാക്യം ________ ആണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: <i>v = f &times; &lambda;</i></div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Wave speed is the product of frequency and wavelength.<br>
+                <strong>Similar Question:</strong> If frequency increases while speed is constant, what happens to wavelength? (Answer: It decreases)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 5] When the length of a simple pendulum increases, its frequency ________.
+            <span class="malayalam-text">(ഒരു ലഘുലോലകത്തിന്റെ നീളം കൂടുമ്പോൾ അതിന്റെ ആവൃത്തി ________.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Decreases (കുറയുന്നു)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Length and frequency are inversely related in a pendulum.<br>
+                <strong>Similar Question:</strong> Does a shorter pendulum vibrate faster or slower? (Answer: Faster)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 6] Transverse waves travel through a medium in the form of ________ and troughs.
+            <span class="malayalam-text">(അനുപ്രസ്ഥ തരംഗങ്ങൾ ഒരു മാധ്യമത്തിലൂടെ സഞ്ചരിക്കുന്നത് ________, ഗർത്തങ്ങൾ എന്നിവയായാണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Crests (ശൃംഗങ്ങൾ)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Transverse waves move particles perpendicular to the wave direction.<br>
+                <strong>Similar Question:</strong> Light waves are an example of which type of wave? (Answer: Transverse wave)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 7] The audible frequency range for a normal human ear is from 20 Hz to ________ Hz.
+            <span class="malayalam-text">(ഒരു സാധാരണ മനുഷ്യന്റെ ശ്രവണ പരിധി 20 Hz മുതൽ ________ Hz വരെയാണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: 20,000 (or 20 kHz)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Sounds outside this range are inaudible to humans.<br>
+                <strong>Similar Question:</strong> What is the lower limit of human hearing? (Answer: 20 Hz)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 8] The phenomenon where an object vibrates with maximum amplitude when an external frequency matches its natural frequency is called ________.
+            <span class="malayalam-text">(പുറമെ നിന്നുള്ള ആവൃത്തി ഒരു വസ്തുവിന്റെ സ്വാഭാവിക ആവൃത്തിക്ക് തുല്യമാകുമ്പോൾ ആ വസ്തു പരമാവധി ആയാമത്തിൽ കമ്പനം ചെയ്യുന്ന പ്രതിഭാസമാണ് ________.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Resonance (അനുനാദം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Resonance leads to maximum loudness in sound.<br>
+                <strong>Similar Question:</strong> Why does a table vibrate loudly when a matching tuning fork is placed on it? (Answer: Due to resonance)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 9] Sounds with a frequency below 20 Hz are called ________ sounds.
+            <span class="malayalam-text">(20 Hz-ൽ താഴെ ആവൃത്തിയുള്ള ശബ്ദങ്ങളെ ________ എന്ന് വിളിക്കുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Infrasonic (ഇൻഫ്രാസോണിക്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> These are too low for humans to hear.<br>
+                <strong>Similar Question:</strong> Can human beings hear infrasonic sounds? (Answer: No)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 10] Sounds with a frequency above 20,000 Hz are called ________ sounds.
+            <span class="malayalam-text">(20,000 Hz-ന് മുകളിൽ ആവൃത്തിയുള്ള ശബ്ദങ്ങളെ ________ എന്ന് വിളിക്കുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Ultrasonic (അൾട്രാസോണിക്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Bats and some other animals can hear these frequencies.<br>
+                <strong>Similar Question:</strong> What is the frequency of sound a bat can hear? (Answer: Up to 120 kHz)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 11] The persistence of hearing for a human ear is approximately ________ seconds.
+            <span class="malayalam-text">(മനുഷ്യന്റെ ശ്രവണ സ്ഥിരത ഏകദേശം ________ സെക്കൻഡാണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: 0.1</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The brain retains a sound sensation for this duration.<br>
+                <strong>Similar Question:</strong> What is the duration for persistence of vision? (Answer: 1/16 of a second)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 12] To hear a clear echo when the speed of sound is 340 m/s, the minimum distance to the reflecting surface should be ________ metres.
+            <span class="malayalam-text">(ശബ്ദവേഗത 340 m/s ആയിരിക്കുമ്പോൾ വ്യക്തമായ പ്രതിധ്വനി കേൾക്കാൻ ആവശ്യമായ ഏറ്റവും കുറഞ്ഞ ദൂരം ________ മീറ്റർ ആണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: 17</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Distance is calculated as (v &times; 0.1) / 2.<br>
+                <strong>Similar Question:</strong> What is the minimum distance if speed is 350 m/s? (Answer: 17.5 m)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 13] The maximum displacement of a vibrating particle from its mean position is called its ________.
+            <span class="malayalam-text">(കമ്പനം ചെയ്യുന്ന ഒരു കണിക അതിന്റെ മദ്യസ്ഥാനത്ത് നിന്നുള്ള പരമാവധി അകലത്തെ ________ എന്ന് വിളിക്കുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Amplitude (ആയാമം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Loudness depends on the amplitude of the wave.<br>
+                <strong>Similar Question:</strong> If a wave has displacement 0.2 m, what is its amplitude? (Answer: 0.2 m)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 14] The time taken to complete one full oscillation is known as the ________.
+            <span class="malayalam-text">(ഒരു പൂർണ്ണ ദോലനം പൂർത്തിയാക്കാൻ എടുക്കുന്ന സമയമാണ് ________.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Period / Time Period (കാലയളവ്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> It is the reciprocal of frequency (T = 1/f).<br>
+                <strong>Similar Question:</strong> If frequency is 50 Hz, what is the period? (Answer: 0.02 s)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 15] Ultrasonic waves are used in medicine for ________ to image internal organs.
+            <span class="malayalam-text">(അന്തരാവയവങ്ങളുടെ ചിത്രം എടുക്കാൻ വൈദ്യശാസ്ത്രരംഗത്ത് അൾട്രാസോണിക് തരംഗങ്ങൾ ഉപയോഗിക്കുന്ന രീതിയാണ് ________.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Ultrasonography (അൾട്രാസോണോഗ്രഫി)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> It is a non-invasive imaging technique.<br>
+                <strong>Similar Question:</strong> Name a medical use of ultrasonic waves other than imaging. (Answer: Crushing kidney stones)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 16] The device used to measure the depth of the ocean using ultrasonic reflection is ________.
+            <span class="malayalam-text">(അൾട്രാസോണിക് പ്രതിഫലനം ഉപയോഗിച്ച് സമുദ്രത്തിന്റെ ആഴം അളക്കാൻ ഉപയോഗിക്കുന്ന ഉപകരണം ________ ആണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: SONAR (സോണാർ)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> SONAR stands for Sound Navigation and Ranging.<br>
+                <strong>Similar Question:</strong> Which wave is used in SONAR? (Answer: Ultrasonic wave)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 17] In ________ waves, the particles of the medium vibrate parallel to the direction of wave travel.
+            <span class="malayalam-text">(________ തരംഗങ്ങളിൽ മാധ്യമത്തിലെ കണികകൾ തരംഗ ഗതിക്ക് സമാന്തരമായി കമ്പനം ചെയ്യുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Longitudinal (അനുദൈർഘ്യം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Sound in air is a longitudinal wave.<br>
+                <strong>Similar Question:</strong> How do particles move in a transverse wave? (Answer: Perpendicular to propagation)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 18] Sound waves ________ (require / do not require) a medium for propagation.
+            <span class="malayalam-text">(ശബ്ദതരംഗങ്ങൾക്ക് സഞ്ചരിക്കാൻ ഒരു മാധ്യമം ________ (ആവശ്യമാണ് / ആവശ്യമില്ല).)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Require (ആവശ്യമാണ്)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Sound cannot travel through a vacuum.<br>
+                <strong>Similar Question:</strong> Does light require a medium to travel? (Answer: No)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 19] If a wave travels at 20 m/s and the distance between adjacent troughs is 2 m, its frequency is ________ Hz.
+            <span class="malayalam-text">(ഒരു തരംഗത്തിന്റെ വേഗത 20 m/s-ഉം തരംഗദൈർഘ്യം 2 m-ഉം ആണെങ്കിൽ അതിന്റെ ആവൃത്തി ________ Hz ആണ്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: 10</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> f = v / &lambda; = 20 / 2 = 10 Hz.<br>
+                <strong>Similar Question:</strong> Find wavelength if speed is 350 m/s and frequency is 2000 Hz. (Answer: 0.175 m)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 20] A bat can hear sounds with frequencies as high as ________ kHz.
+            <span class="malayalam-text">(വവ്വാലുകൾക്ക് ________ kHz വരെയുള്ള ഉയർന്ന ആവൃത്തിയുള്ള ശബ്ദങ്ങൾ കേൾക്കാൻ കഴിയും.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: 120</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Bats use these high frequencies for echolocation.<br>
+                <strong>Similar Question:</strong> Is 120 kHz an ultrasonic or infrasonic frequency? (Answer: Ultrasonic)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 21] The product of frequency (<i>f</i>) and time period (<i>T</i>) is always ________.
+            <span class="malayalam-text">(ആവൃത്തിയുടെയും (<i>f</i>) കാലയളവിന്റെയും (<i>T</i>) ഗുണനഫലം എപ്പോഴും ________ ആയിരിക്കും.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: 1</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Since f = 1/T, f &times; T = 1.<br>
+                <strong>Similar Question:</strong> If the period is 2 seconds, what is the frequency? (Answer: 0.5 Hz)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 22] The distance between two adjacent compressions or rarefactions in a longitudinal wave is called its ________.
+            <span class="malayalam-text">(ഒരു അനുദൈർഘ്യ തരംഗത്തിൽ അടുത്തടുത്ത രണ്ട് ഘനീഭവനങ്ങൾ അല്ലെങ്കിൽ വിരളനങ്ങൾ തമ്മിലുള്ള ദൂരമാണ് ________.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Wavelength (തരംഗദൈർഘ്യം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Wavelength is denoted by the Greek letter Lambda (&lambda;).<br>
+                <strong>Similar Question:</strong> What is wavelength in a transverse wave? (Answer: Distance between two adjacent crests)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 23] During resonance, an object vibrates with ________ (minimum / maximum) amplitude.
+            <span class="malayalam-text">(അനുനാദം നടക്കുമ്പോൾ ഒരു വസ്തു ________ (ഏറ്റവും കുറഞ്ഞ / പരമാവധി) ആയാമത്തിൽ കമ്പനം ചെയ്യുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Maximum (പരമാവധി)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> This causes the sound produced to be very loud.<br>
+                <strong>Similar Question:</strong> Does resonance increase or decrease loudness? (Answer: Increases)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 24] Natural frequency of an object depends on its length, size, material, and ________.
+            <span class="malayalam-text">(ഒരു വസ്തുവിന്റെ സ്വാഭാവിക ആവൃത്തി അതിന്റെ നീളം, വലിപ്പം, പദാർത്ഥം, ________ എന്നിവയെ ആശ്രയിച്ചിരിക്കുന്നു.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Elasticity (ഇലാസ്തികത)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> These physical properties determine how an object vibrates naturally.<br>
+                <strong>Similar Question:</strong> Does hitting an object harder change its natural frequency? (Answer: No)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            [Q 25] Sound travels fastest in the ________ (solid / liquid / gas) state of matter.
+            <span class="malayalam-text">(പദാർത്ഥത്തിന്റെ ________ (ഖര / ദ്രാവക / വാതക) അവസ്ഥയിലാണ് ശബ്ദം ഏറ്റവും വേഗത്തിൽ സഞ്ചരിക്കുന്നത്.)</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Answer: Solid (ഖരം)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Particles are more closely packed in solids, allowing faster transfer of vibration.<br>
+                <strong>Similar Question:</strong> Which has a higher speed of sound: Air or Steel? (Answer: Steel)
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Part C: Assertion & Reason Questions</h2>
+    
+    <div class="instruction-box">
+        <strong>Instructions for Options (നിർദ്ദേശങ്ങൾ):</strong><br>
+        (a) Both A and R are true, and R is the correct explanation of A. (A-യും R-ഉം ശരിയാണ്, R എന്നത് A-യുടെ ശരിയായ വിശദീകരണമാണ്.)<br>
+        (b) Both A and R are true, but R is not the correct explanation of A. (A-യും R-ഉം ശരിയാണ്, എന്നാൽ R എന്നത് A-യുടെ ശരിയായ വിശദീകരണമല്ല.)<br>
+        (c) A is true, but R is false. (A ശരിയാണ്, എന്നാൽ R തെറ്റാണ്.)<br>
+        (d) A is false, but R is true. (A തെറ്റാണ്, എന്നാൽ R ശരിയാണ്.)
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            1. <strong>Assertion (A):</strong> Sound waves in air are longitudinal waves.<br>
+            <strong>Reason (R):</strong> In these waves, particles of the medium vibrate parallel to the direction of wave propagation.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> വായുവിലൂടെയുള്ള ശബ്ദതരംഗങ്ങൾ അനുദൈർഘ്യതരംഗങ്ങളാണ്.<br><strong>Reason (R):</strong> ഈ തരംഗങ്ങളിൽ മാധ്യമത്തിലെ കണികകൾ തരംഗഗതിക്ക് സമാന്തരമായി കമ്പനം ചെയ്യുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Longitudinal waves move particles in the same direction as the wave.<br>
+                <strong>വിശദീകരണം:</strong> അനുദൈർഘ്യ തരംഗങ്ങളിൽ കണികകൾ തരംഗ ഗതിക്ക് സമാന്തരമായി കമ്പനം ചെയ്യുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            2. <strong>Assertion (A):</strong> To hear a clear echo, the minimum distance to the reflecting surface must be 17 m (at speed 340 m/s).<br>
+            <strong>Reason (R):</strong> The sensation of sound persists in our brain for 0.1 seconds.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> വ്യക്തമായ പ്രതിധ്വനി കേൾക്കാൻ പ്രതിഫലന ഉപരിതലത്തിലേക്കുള്ള ഏറ്റവും കുറഞ്ഞ ദൂരം 17 മീറ്റർ ആയിരിക്കണം.<br><strong>Reason (R):</strong> ശബ്ദത്തിന്റെ അനുഭവം നമ്മുടെ തലച്ചോറിൽ 0.1 സെക്കൻഡ് നേരം നിലനിൽക്കും.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> This 0.1s interval is called persistence of hearing.<br>
+                <strong>വിശദീകരണം:</strong> 0.1 സെക്കൻഡ് നീണ്ടുനിൽക്കുന്ന ശ്രവണ സ്ഥിരത കാരണമാണ് ഈ ദൂരം ആവശ്യമായി വരുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            3. <strong>Assertion (A):</strong> When the length of a simple pendulum increases, its frequency decreases.<br>
+            <strong>Reason (R):</strong> Frequency is the number of oscillations completed in one second.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ലഘുലോലകത്തിന്റെ നീളം കൂടുമ്പോൾ അതിന്റെ ആവൃത്തി കുറയുന്നു.<br><strong>Reason (R):</strong> ഒരു സെക്കൻഡിൽ പൂർത്തിയാകുന്ന ദോലനങ്ങളുടെ എണ്ണമാണ് ആവൃത്തി.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (b)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Both are true, but R doesn't explain the length-frequency relationship.<br>
+                <strong>വിശദീകരണം:</strong> രണ്ടും ശരിയായ പ്രസ്താവനകളാണെങ്കിലും കാരണം ലോലകത്തിന്റെ നീളവും ആവൃത്തിയും തമ്മിലുള്ള ബന്ധത്തെ വിശദീകരിക്കുന്നില്ല.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            4. <strong>Assertion (A):</strong> Light waves are transverse waves.<br>
+            <strong>Reason (R):</strong> In transverse waves, particles vibrate perpendicular to the direction of wave propagation.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> പ്രകാശതരംഗങ്ങൾ അനുപ്രസ്ഥതരംഗങ്ങളാണ്.<br><strong>Reason (R):</strong> അനുപ്രസ്ഥതരംഗങ്ങളിൽ കണികകൾ തരംഗഗതിക്ക് ലംബമായി കമ്പനം ചെയ്യുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Transverse waves move particles at right angles to the wave direction.<br>
+                <strong>വിശദീകരണം:</strong> അനുപ്രസ്ഥ തരംഗങ്ങളിൽ കണികകൾ തരംഗ ഗതിക്ക് ലംബമായി കമ്പനം ചെയ്യുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            5. <strong>Assertion (A):</strong> A table vibrates with maximum loudness when a matching tuning fork is placed on it.<br>
+            <strong>Reason (R):</strong> This phenomenon is known as resonance.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> അനുയോജ്യമായ ഒരു ട്യൂണിംഗ് ഫോർക്ക് മേശപ്പുറത്ത് വെയ്ക്കുമ്പോൾ മേശ പരമാവധി ശബ്ദത്തിൽ കമ്പനം ചെയ്യുന്നു.<br><strong>Reason (R):</strong> ഈ പ്രതിഭാസം അനുനാദം എന്ന് അറിയപ്പെടുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Resonance causes vibrations with maximum amplitude.<br>
+                <strong>വിശദീകരണം:</strong> ബാഹ്യ ആവൃത്തി സ്വാഭാവിക ആവൃത്തിക്ക് തുല്യമാകുമ്പോൾ അനുനാദം മൂലം ഉച്ചത കൂടുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            6. <strong>Assertion (A):</strong> Wave speed is calculated as <i>v = f &times; &lambda;</i>.<br>
+            <strong>Reason (R):</strong> Wave speed is the distance travelled by a wave in one second.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> തരംഗവേഗത കണക്കാക്കുന്നത് <i>v = f &times; &lambda;</i> എന്ന സമവാക്യം ഉപയോഗിച്ചാണ്.<br><strong>Reason (R):</strong> ഒരു സെക്കൻഡിൽ ഒരു തരംഗം സഞ്ചരിക്കുന്ന ദൂരമാണ് തരംഗവേഗത.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The product of frequency and wavelength gives the speed.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു സെക്കൻഡിൽ തരംഗം സഞ്ചരിക്കുന്ന ദൂരമാണ് വേഗത, ഇത് ആവൃത്തിയുടെയും തരംഗദൈർഘ്യത്തിന്റെയും ഗുണനഫലമാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            7. <strong>Assertion (A):</strong> Human beings can hear sounds of 15 Hz frequency.<br>
+            <strong>Reason (R):</strong> The audible range for humans is 20 Hz to 20,000 Hz.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> മനുഷ്യന് 15 Hz ആവൃത്തിയുള്ള ശബ്ദങ്ങൾ കേൾക്കാൻ സാധിക്കും.<br><strong>Reason (R):</strong> മനുഷ്യന്റെ ശ്രവണ പരിധി 20 Hz മുതൽ 20,000 Hz വരെയാണ്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> 15 Hz is infrasonic and inaudible.<br>
+                <strong>വിശദീകരണം:</strong> മനുഷ്യന്റെ ശ്രവണ പരിധി 20 Hz മുതൽ ആരംഭിക്കുന്നതിനാൽ 15 Hz കേൾക്കാൻ കഴിയില്ല.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            8. <strong>Assertion (A):</strong> Bats can navigate and catch prey in total darkness.<br>
+            <strong>Reason (R):</strong> Bats produce and hear ultrasonic sounds up to 120 kHz.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> വവ്വാലുകൾക്ക് ഇരുട്ടിലും വഴി കണ്ടെത്താനും ഇരപിടിക്കാനും സാധിക്കും.<br><strong>Reason (R):</strong> വവ്വാലുകൾ 120 kHz വരെയുള്ള അൾട്രാസോണിക് ശബ്ദങ്ങൾ പുറപ്പെടുവിക്കുകയും കേൾക്കുകയും ചെയ്യുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Bats use ultrasonic echoes for navigation.<br>
+                <strong>വിശദീകരണം:</strong> വവ്വാലുകൾ അൾട്രാസോണിക് ശബ്ദം ഉപയോഗിച്ചാണ് സഞ്ചാരപാത കണ്ടെത്തുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            9. <strong>Assertion (A):</strong> Sound waves cannot travel through a vacuum.<br>
+            <strong>Reason (R):</strong> Sound waves are mechanical waves and require a medium to travel.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ശബ്ദതരംഗങ്ങൾക്ക് ശൂന്യതയിലൂടെ സഞ്ചരിക്കാൻ കഴിയില്ല.<br><strong>Reason (R):</strong> ശബ്ദതരംഗങ്ങൾ യാന്ത്രിക തരംഗങ്ങളാണ്, ഇവയ്ക്ക് സഞ്ചരിക്കാൻ മാധ്യമം ആവശ്യമാണ്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Mechanical waves need solids, liquids, or gases to propagate.<br>
+                <strong>വിശദീകരണം:</strong> യാന്ത്രിക തരംഗമായ ശബ്ദത്തിന് സഞ്ചരിക്കാൻ ഒരു മാധ്യമം ആവശ്യമാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            10. <strong>Assertion (A):</strong> If frequency is 2 Hz, the time period is 0.5 s.<br>
+            <strong>Reason (R):</strong> Period (T) and Frequency (f) are inversely related (T = 1/f).
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ആവൃത്തി 2 Hz ആണെങ്കിൽ, കാലയളവ് 0.5 s ആയിരിക്കും.<br><strong>Reason (R):</strong> കാലയളവും (T) ആവൃത്തിയും (f) വിപരീത അനുപാതത്തിലാണ് (T = 1/f).</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> 1 / 2 = 0.5 s.<br>
+                <strong>വിശദീകരണം:</strong> ആവൃത്തിയുടെ വ്യുൽക്രമമാണ് കാലയളവ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            11. <strong>Assertion (A):</strong> Longitudinal waves consist of crests and troughs.<br>
+            <strong>Reason (R):</strong> Compressions and rarefactions are formed in longitudinal waves.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> അനുദൈർഘ്യതരംഗങ്ങളിൽ ശൃംഗങ്ങളും ഗർത്തങ്ങളും അടങ്ങിയിരിക്കുന്നു.<br><strong>Reason (R):</strong> അനുദൈർഘ്യതരംഗങ്ങളിൽ ഘനീഭവനങ്ങളും വിരളനങ്ങളും രൂപപ്പെടുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Crests and troughs are features of transverse waves, not longitudinal waves.<br>
+                <strong>വിശദീകരണം:</strong> ശൃംഗങ്ങളും ഗർത്തങ്ങളും അനുപ്രസ്ഥ തരംഗങ്ങളിലാണ് ഉണ്ടാകുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            12. <strong>Assertion (A):</strong> Resonance leads to a decrease in loudness.<br>
+            <strong>Reason (R):</strong> During resonance, the object vibrates with maximum amplitude.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> അനുനാദം ശബ്ദത്തിന്റെ ഉച്ചത കുറയ്ക്കാൻ കാരണമാകുന്നു.<br><strong>Reason (R):</strong> അനുനാദ സമയത്ത് വസ്തു പരമാവധി ആയാമത്തിൽ കമ്പനം ചെയ്യുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Maximum amplitude increases loudness, it does not decrease it.<br>
+                <strong>വിശദീകരണം:</strong> അനുനാദം ആയാമം വർദ്ധിപ്പിക്കുന്നു, ഇത് ശബ്ദത്തിന്റെ ഉച്ചത കൂട്ടുകയാണ് ചെയ്യുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            13. <strong>Assertion (A):</strong> SONAR is used to measure the depth of the ocean.<br>
+            <strong>Reason (R):</strong> Ultrasonic waves are reflected from the sea bed to calculate distance.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> സമുദ്രത്തിന്റെ ആഴം അളക്കാൻ സോണാർ ഉപയോഗിക്കുന്നു.<br><strong>Reason (R):</strong> ദൂരം കണക്കാക്കാൻ അൾട്രാസോണിക് തരംഗങ്ങൾ കടൽത്തട്ടിൽ നിന്ന് പ്രതിഫലിപ്പിക്കുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> SONAR stands for Sound Navigation and Ranging.<br>
+                <strong>വിശദീകരണം:</strong> അൾട്രാസോണിക് തരംഗങ്ങളുടെ പ്രതിഫലനം ഉപയോഗിച്ചാണ് സോണാർ പ്രവർത്തിക്കുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            14. <strong>Assertion (A):</strong> A reflected sound reaching the ear after 0.05 seconds results in a clear echo.<br>
+            <strong>Reason (R):</strong> Clear echo is heard only if reflected sound arrives after 0.1 s.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> പ്രതിഫലിച്ച ശബ്ദം 0.05 സെക്കൻഡിന് ശേഷം ചെവിയിൽ എത്തുമ്പോൾ വ്യക്തമായ പ്രതിധ്വനി ഉണ്ടാകുന്നു.<br><strong>Reason (R):</strong> പ്രതിഫലിച്ച ശബ്ദം 0.1 സെക്കൻഡിന് ശേഷം വന്നാൽ മാത്രമേ വ്യക്തമായ പ്രതിധ്വനി കേൾക്കൂ.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> 0.05s is less than the persistence of hearing interval, so no echo is heard.<br>
+                <strong>വിശദീകരണം:</strong> വ്യക്തമായ പ്രതിധ്വനി കേൾക്കാൻ 0.1 സെക്കൻഡെങ്കിലും സമയം വേണം.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            15. <strong>Assertion (A):</strong> The natural frequency of an object depends on its size and material.<br>
+            <strong>Reason (R):</strong> Every object has a unique frequency at which it vibrates naturally.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ഒരു വസ്തുവിന്റെ സ്വാഭാവിക ആവൃത്തി അതിന്റെ വലിപ്പത്തെയും പദാർത്ഥത്തെയും ആശ്രയിച്ചിരിക്കുന്നു.<br><strong>Reason (R):</strong> ഓരോ വസ്തുവിനും അത് സ്വാഭാവികമായി കമ്പനം ചെയ്യുന്ന ഒരു പ്രത്യേക ആവൃത്തിയുണ്ട്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Physical properties uniquely determine the natural frequency.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു വസ്തുവിന്റെ ഭൗതിക ഗുണങ്ങളാണ് അതിന്റെ സ്വാഭാവിക ആവൃത്തി നിശ്ചയിക്കുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            16. <strong>Assertion (A):</strong> Sound travels faster in steel than in air.<br>
+            <strong>Reason (R):</strong> Sound speed is generally higher in solids due to closer particle packing.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ശബ്ദം വായുവിനേക്കാൾ വേഗത്തിൽ ഉരുക്കിൽ സഞ്ചരിക്കുന്നു.<br><strong>Reason (R):</strong> തന്മാത്രകളുടെ അടുത്തടുത്തുള്ള ഘടന കാരണം ഖരപദാർത്ഥങ്ങളിൽ ശബ്ദവേഗത പൊതുവെ കൂടുതലാണ്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Medium density and elasticity affect wave velocity parameters.<br>
+                <strong>വിശദീകരണം:</strong> ഖരപദാർത്ഥങ്ങളിൽ തന്മാത്രകൾ അടുത്തിരിക്കുന്നതിനാൽ ശബ്ദവേഗത കൂടുതലായിരിക്കും.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            17. <strong>Assertion (A):</strong> Earthquakes produce infrasonic sounds.<br>
+            <strong>Reason (R):</strong> Infrasonic sounds have a frequency above 20,000 Hz.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ഭൂകമ്പങ്ങൾ ഇൻഫ്രാസോണിക് ശബ്ദങ്ങൾ പുറപ്പെടുവിക്കുന്നു.<br><strong>Reason (R):</strong> ഇൻഫ്രാസോണിക് ശബ്ദങ്ങൾക്ക് 20,000 Hz-ന് മുകളിൽ ആവൃത്തിയുണ്ട്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Infrasonic frequencies are strictly below 20 Hz.<br>
+                <strong>വിശദീകരണം:</strong> 20 Hz-ൽ താഴെയുള്ള ശബ്ദങ്ങളെയാണ് ഇൻഫ്രാസോണിക് എന്ന് വിളിക്കുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            18. <strong>Assertion (A):</strong> The distance between a compression and the next rarefaction is exactly one wavelength (&lambda;).<br>
+            <strong>Reason (R):</strong> Wavelength is the distance between two adjacent compressions.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ഒരു ഘനീഭവനവും അടുത്ത വിരളനവും തമ്മിലുള്ള ദൂരം കൃത്യമായി ഒരു തരംഗദൈർഘ്യമാണ് (&lambda;).<br><strong>Reason (R):</strong> അടുത്തടുത്ത രണ്ട് ഘനീഭവനങ്ങൾ തമ്മിലുള്ള ദൂരമാണ് തരംഗദൈർഘ്യം.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The distance from a compression to the immediate next rarefaction is half a wavelength (&lambda;/2).<br>
+                <strong>വിശദീകരണം:</strong> അടുത്തടുത്ത രണ്ട് ഘനീഭവനങ്ങൾ തമ്മിലുള്ള ദൂരമാണ് തരംഗദൈർഘ്യം.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            19. <strong>Assertion (A):</strong> In wave motion, energy is transferred without actual transport of matter.<br>
+            <strong>Reason (R):</strong> Particles in the medium only vibrate about their equilibrium positions.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> തരംഗചലനത്തിൽ പദാർത്ഥങ്ങളുടെ യഥാർത്ഥ കൈമാറ്റം കൂടാതെ ഊർജ്ജം കൈമാറ്റം ചെയ്യപ്പെടുന്നു.<br><strong>Reason (R):</strong> മാധ്യമത്തിലെ കണികകൾ അവയുടെ ആധാര സ്ഥാനത്തെ അടിസ്ഥാനമാക്കി കമ്പനം ചെയ്യുക മാത്രമേ ചെയ്യുന്നുള്ളൂ.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Matter stays in its locality; only the energetic disturbance migrates.<br>
+                <strong>വിശദീകരണം:</strong> മാധ്യമത്തിലെ കണികകൾ സ്ഥാനം മാറുന്നില്ല, അവയുടെ കമ്പനം വഴി ഊർജ്ജം കൈമാറ്റം ചെയ്യപ്പെടുന്നു.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            20. <strong>Assertion (A):</strong> A swing's motion is an example of oscillatory motion.<br>
+            <strong>Reason (R):</strong> Oscillation is a periodic to-and-fro motion about a fixed position.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ഊഞ്ഞാലിന്റെ ചലനം ദോലന ചലനത്തിന് ഒരു ഉദാഹരണമാണ്.<br><strong>Reason (R):</strong> ഒരു നിശ്ചിത സ്ഥാനത്തെ അടിസ്ഥാനമാക്കിയുള്ള ആവർത്തന സ്വഭാവമുള്ള അങ്ങോട്ടും ഇങ്ങോട്ടുമുള്ള ചലനമാണ് ദോലനം.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> A swing moves symmetrically about a central stable equilibrium point.<br>
+                <strong>വിശദീകരണം:</strong> ഒരു ആധാര സ്ഥാനത്തെ അടിസ്ഥാനമാക്കിയുള്ള അങ്ങോട്ടും ഇങ്ങോട്ടുമുള്ള ചലനമാണ് ദോലനം.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            21. <strong>Assertion (A):</strong> Ultrasonography is a medical imaging technique.<br>
+            <strong>Reason (R):</strong> It uses infrasonic waves to image internal organs.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> അൾട്രാസോണോഗ്രഫി ഒരു മെഡിക്കൽ ഇമേജിംഗ് രീതിയാണ്.<br><strong>Reason (R):</strong> ഇത് അന്തരാവയവങ്ങളുടെ ചിത്രമെടുക്കാൻ ഇൻഫ്രാസോണിക് തരംഗങ്ങൾ ഉപയോഗിക്കുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> As the name implies, it utilizes ultrasonic waves, not infrasonic waves.<br>
+                <strong>വിശദീകരണം:</strong> അൾട്രാസോണോഗ്രഫിയിൽ അൾട്രാസോണിക് തരംഗങ്ങളാണ് ഉപയോഗിക്കുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            22. <strong>Assertion (A):</strong> Ripples on a water surface are transverse waves.<br>
+            <strong>Reason (R):</strong> Water particles move parallel to the direction of the ripples.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ജലോപരിതലത്തിലെ ഓളങ്ങൾ അനുപ്രസ്ഥ തരംഗങ്ങളാണ്.<br><strong>Reason (R):</strong> ജലത്തിലെ കണികകൾ ഓളങ്ങളുടെ ദിശയ്ക്ക് സമാന്തരമായി ചലിക്കുന്നു.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (c)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> The particles move perpendicular to the direction of wave propagation in transverse waves.<br>
+                <strong>വിശദീകരണം:</strong> ജലോപരിതലത്തിലെ ഓളങ്ങൾ അനുപ്രസ്ഥ തരംഗങ്ങളാണ്, അവിടെ കണികകൾ ലംബമായാണ് ചലിക്കുന്നത്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            23. <strong>Assertion (A):</strong> Hertz is the unit used to measure wavelength.<br>
+            <strong>Reason (R):</strong> Frequency is the number of oscillations per unit time.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> തരംഗദൈർഘ്യം അളക്കാൻ ഉപയോഗിക്കുന്ന യൂണിറ്റാണ് ഹെർട്സ്.<br><strong>Reason (R):</strong> യൂണിറ്റ് സമയത്തിൽ ഉണ്ടാകുന്ന ദോലനങ്ങളുടെ എണ്ണമാണ് ആവൃത്തി.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (d)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Hertz is the proper SI unit of frequency; wavelength is measured in metres.<br>
+                <strong>വിശദീകരണം:</strong> ആവൃത്തിയുടെ യൂണിറ്റാണ് ഹെർട്സ്, തരംഗദൈർഘ്യത്തിന്റേതല്ല.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            24. <strong>Assertion (A):</strong> If the speed of sound is 350 m/s, an echo from a wall 17.5 m away can be heard.<br>
+            <strong>Reason (R):</strong> Distance is calculated as <i>d = (v &times; t) / 2</i>.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> ശബ്ദവേഗത 350 m/s ആണെങ്കിൽ, 17.5 മീറ്റർ അകലെയുള്ള ഭിത്തിയിൽ നിന്നുള്ള പ്രതിധ്വനി കേൾക്കാം.<br><strong>Reason (R):</strong> ദൂരം കണക്കാക്കുന്നത് <i>d = (v &times; t) / 2</i> എന്ന സമവാക്യം വഴിയാണ്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> Using the mathematical path breakdown: (350 &times; 0.1) / 2 = 17.5 m.<br>
+                <strong>വിശദീകരണം:</strong> 350 m/s വേഗതയുള്ള വായുവിൽ പ്രതിധ്വനി കേൾക്കാൻ 17.5 മീറ്റർ ദൂരം ആവശ്യമാണ്.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-text">
+            25. <strong>Assertion (A):</strong> Ultrasonic waves are used to crush kidney stones.<br>
+            <strong>Reason (R):</strong> Ultrasonic waves have high frequency and energy.
+            <span class="malayalam-text"><strong>Assertion (A):</strong> വൃക്കയിലെ കല്ലുകൾ പൊടിക്കാൻ അൾട്രാസോണിക് തരംഗങ്ങൾ ഉപയോഗിക്കുന്നു.<br><strong>Reason (R):</strong> അൾട്രാസോണിക് തരംഗങ്ങൾക്ക് ഉയർന്ന ആവൃത്തിയും ഊർജ്ജവുമുണ്ട്.</span>
+        </div>
+        <button class="btn-toggle" onclick="toggleAnswer(this)">Show Answer / ഉത്തരം കാണുക</button>
+        <div class="answer-panel">
+            <div class="ans-title">Correct Answer: (a)</div>
+            <div class="explanation">
+                <strong>Explanation:</strong> High-frequency sound vibrations focus deep mechanical energy onto non-invasive targets.<br>
+                <strong>വിശദീകരണം:</strong> ഉയർന്ന ആവൃത്തിയും ഊർജ്ജവും ഉള്ളതിനാൽ അൾട്രാസോണിക് തരംഗങ്ങൾ വൃക്കയിലെ കല്ല് പൊടിക്കാൻ ഉപയോഗിക്കുന്നു.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function toggleAnswer(button) {
+        var panel = button.nextElementSibling;
+        
+        if (panel.classList.contains('show')) {
+            panel.classList.remove('show');
+            button.textContent = "Show Answer / ഉത്തരം കാണുക";
+        } else {
+            panel.classList.add('show');
+            button.textContent = "Hide Answer / ഉത്തരം മറയ്ക്കുക";
+        }
+    }
+</script>
+
+</body>
+</html>
