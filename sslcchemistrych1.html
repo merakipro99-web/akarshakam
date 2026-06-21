@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De AASH Study Centre</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* Global Configuration System Design Tokens Map */
+        :root {
+            --light-blue-bg: #E3F2FD;       /* Layout structural backdrop overlay */
+            --orange-primary: #FF9800;     /* Primary accents, markers and highlights */
+            --orange-dark: #E65100;        /* Bold headlines, callouts and brand details */
+            --navy-dark: #0A4D68;           /* Core operational wrappers borders and frames */
+            --text-dark: #1E293B;          /* Maximum reading contrast color */
+            --surface-white: #FFFFFF;      /* Clean presentational sheets canvas background */
+            --font-main: 'Plus Jakarta Sans', 'Anek Malayalam', sans-serif;
+        }
+
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--light-blue-bg); 
+            font-family: var(--font-main);
+            color: var(--text-dark);
+        }
+
+        /* Top Bar Dynamic Layout Selectors Controls Cluster Box */
+        #utility-controls { 
+            max-width: 840px; 
+            margin: 25px auto 0 auto; 
+            display: flex; 
+            justify-content: flex-end;
+            padding: 12px 20px; 
+            background: var(--surface-white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(10, 77, 104, 0.05);
+            box-sizing: border-box;
+        }
+
+        .toggle-btn { 
+            background: #E2E8F0; 
+            color: var(--navy-dark); 
+            border: none; 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.2s ease; 
+            font-family: inherit;
+        }
+        
+        .toggle-btn.active {
+            background: var(--orange-primary);
+            color: var(--surface-white);
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+        }
+
+        /* Presentation Portal A4 Sheet Viewport Document Container Frame */
+        #print-container { 
+            background: var(--surface-white); 
+            width: 210mm; 
+            min-height: 297mm; 
+            margin: 20px auto 40px auto; 
+            padding: 25mm 20mm; 
+            box-shadow: 0 15px 45px rgba(10, 77, 104, 0.1); 
+            position: relative; 
+            box-sizing: border-box;
+            border-radius: 4px;
+            border-top: 12px solid var(--orange-primary);
+        }
+
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-weight: 800; 
+            color: var(--navy-dark);
+            border-bottom: 3px solid var(--light-blue-bg); 
+            padding-bottom: 12px; 
+            margin-bottom: 30px; 
+            font-size: 16px;
+        }
+
+        /* Structural Typography Headers Accents */
+        h2 { 
+            color: var(--navy-dark); 
+            border-left: 5px solid var(--orange-primary); 
+            padding-left: 12px; 
+            margin-top: 35px; 
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        /* Question Template Presentation Workspace Box Block */
+        .q-box { 
+            border-bottom: 1px dashed #E2E8F0;
+            padding-bottom: 20px;
+            margin-bottom: 20px; 
+            background-color: var(--surface-white); 
+        }
+        
+        .q-box p {
+            font-size: 16.5px;
+            line-height: 1.5;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .structure { 
+            font-family: monospace; 
+            background: #F8FAFC; 
+            padding: 10px 16px; 
+            display: inline-block; 
+            margin: 10px 0 15px 0; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            color: var(--navy-dark); 
+            border: 1.5px solid #E2E8F0; 
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Options layout system grid array configuration */
+        .options-cluster-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .option-item {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Language Node Layer Visibility Classes toggles */
+        .ml-text {
+            display: block;
+            font-family: 'Anek Malayalam', sans-serif;
+            color: var(--orange-dark);
+            font-size: 14.5px;
+            margin-top: 4px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .hide-ml .ml-text {
+            display: none !important;
+        }
+
+        /* Interactive Action Core Trigger Elements Reveal UI Layout */
+        .btn-reveal { 
+            background: var(--navy-dark); 
+            color: var(--surface-white); 
+            border: none; 
+            padding: 8px 16px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-size: 13px;
+            margin-top: 5px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-reveal:hover { background: #126082; }
+
+        .answer { 
+            display: none; 
+            margin-top: 15px; 
+            padding: 14px 18px; 
+            background: #E8F5E9; 
+            border: 1.5px solid #A5D6A7; 
+            color: #1B5E20; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .btn-print { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 25px; 
+            padding: 14px 28px; 
+            background-color: #28a745; 
+            color: var(--surface-white); 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+            z-index: 1000;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .btn-print:hover { background-color: #218838; transform: translateY(-2px); }
+
+        /* --- PRINT OVERRIDES DESIGN SETTINGS (A4 PDF EXPORTS) --- */
+        @media print {
+            @page { size: A4; margin: 15mm 10mm; }
+            body { background: var(--surface-white); padding: 0; margin: 0; }
+            #utility-controls, .btn-print, .btn-reveal, .answer { display: none !important; }
+            #print-container { box-shadow: none; width: 100%; min-height: auto; padding: 0; margin: 0; background: var(--surface-white) !important; border-top: none; }
+            .header { border-bottom: 2px solid var(--text-dark); padding-bottom: 8px; margin-bottom: 25px; }
+            .q-box { padding-bottom: 15px; margin-bottom: 20px; page-break-inside: avoid; }
+            
+            #print-container::after {
+                content: "Akarsh Sajikumar M";
+                position: fixed;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 70pt;
+                font-weight: 800;
+                color: #000000; 
+                opacity: 0.06; 
+                z-index: -1;
+                pointer-events: none;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="utility-controls">
+    <button id="toggle-ml-btn" class="toggle-btn active" onclick="toggleLanguage()">Language: Malayalam ON</button>
+</div>
+
+<div id="print-container">
+    <div class="header">
+        <span>De AASH Study Centre Vattappara</span>
+        <span>7736 306 304</span>
+    </div>
+    
+    <div id="output-content">
+        
+        <h2>Part 1: Multiple Choice Questions</h2>
+
+        <div class="q-box">
+            <p>1. Identify the word root for a continuous carbon chain containing 7 carbon atoms.<span class="ml-text">7 കാർബൺ ആറ്റങ്ങളുള്ള ഒരു തുടർച്ചയായ കാർബൺ ശൃംഖലയുടെ വേഡ് റൂട്ട് (word root) ഏതാണെന്ന് കണ്ടെത്തുക.</span></p>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) Hex <span class="ml-text">(a) ഹെക്സ്</span></div>
+                <div class="option-item">(b) Hept <span class="ml-text">(b) ഹെപ്റ്റ്</span></div>
+                <div class="option-item">(c) Oct <span class="ml-text">(c) ഒക്ട്</span></div>
+                <div class="option-item">(d) Pent <span class="ml-text">(d) പെന്റ്</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m1')">Reveal Answer</button>
+            <div id="m1" class="answer">Answer: (b) Hept <span class="ml-text">ഉത്തരം: (b) ഹെപ്റ്റ്</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>2. Which IUPAC suffix is used for naming the family of alcohols?<span class="ml-text">ആൽക്കഹോൾ വിഭാഗത്തിന് പേരിടുന്നതിനായി ഉപയോഗിക്കുന്ന IUPAC സഫിക്സ് (suffix) ഏതാണ്?</span></p>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) -al <span class="ml-text">(a) -al (-ആൽ)</span></div>
+                <div class="option-item">(b) -one <span class="ml-text">(b) -one (-ഓൺ)</span></div>
+                <div class="option-item">(c) -ol <span class="ml-text">(c) -ol (-ഓൾ)</span></div>
+                <div class="option-item">(d) -oic acid <span class="ml-text">(d) -oic acid (-ഓയിക് ആസിഡ്)</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m2')">Reveal Answer</button>
+            <div id="m2" class="answer">Answer: (c) -ol <span class="ml-text">ഉത്തരം: (c) -ol (-ഓൾ)</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>3. Observe the structural formula and identify its IUPAC name:<span class="ml-text">താഴെ നൽകിയിരിക്കുന്ന ഘടനാ സമവാക്യം നിരീക്ഷിച്ച് അതിന്റെ IUPAC നാമം കണ്ടെത്തുക:</span></p>
+            <div class="structure">CH₃ — CH₂ — O — CH₃</div>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) Ethoxymethane <span class="ml-text">(a) എഥോക്സിമീഥേൻ</span></div>
+                <div class="option-item">(b) Methoxyethane <span class="ml-text">(b) മെഥോക്സിഎഥേൻ</span></div>
+                <div class="option-item">(c) Methoxypropane <span class="ml-text">(c) മെഥോക്സിപ്രൊപ്പേൻ</span></div>
+                <div class="option-item">(d) Ethoxyethane <span class="ml-text">(d) എഥോക്സിഎഥേൻ</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m3')">Reveal Answer</button>
+            <div id="m3" class="answer">Answer: (b) Methoxyethane <span class="ml-text">ഉത്തരം: (b) മെഥോക്സിഎഥേൻ</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>4. What is the name of the aromatic compound formed when a hydrogen in Benzene is replaced by -OH?<span class="ml-text">ബെൻസീനിലെ ഒരു ഹൈഡ്രജന് പകരം -OH ഗ്രൂപ്പ് വരുമ്പോൾ ഉണ്ടാകുന്ന ആരോമാറ്റിക് സംയുക്തത്തിന്റെ പേരെന്താണ്?</span></p>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) Benzoic Acid <span class="ml-text">(a) ബെൻസോയിക് ആസിഡ്</span></div>
+                <div class="option-item">(b) Toluene <span class="ml-text">(b) ടൊളുവിൻ</span></div>
+                <div class="option-item">(c) Phenol <span class="ml-text">(c) ഫിനോൾ</span></div>
+                <div class="option-item">(d) Cyclohexanol <span class="ml-text">(d) സൈക്ലോഹെക്സനോൾ</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m4')">Reveal Answer</button>
+            <div id="m4" class="answer">Answer: (c) Phenol <span class="ml-text">ഉത്തരം: (c) ഫിനോൾ</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>5. Identify the branch position in the following hydrocarbon:<span class="ml-text">താഴെ നൽകിയിരിക്കുന്ന ഹൈഡ്രോകാർബണിലെ ബ്രാഞ്ചിന്റെ സ്ഥാനം (position) കണ്ടെത്തുക:</span></p>
+            <div class="structure">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CH₃<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CH₃ — CH — CH₂ — CH₂ — CH₃
+            </div>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) 1 <span class="ml-text">(a) 1</span></div>
+                <div class="option-item">(b) 2 <span class="ml-text">(b) 2</span></div>
+                <div class="option-item">(c) 3 <span class="ml-text">(c) 3</span></div>
+                <div class="option-item">(d) 4 <span class="ml-text">(d) 4</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m5')">Reveal Answer</button>
+            <div id="m5" class="answer">Answer: (b) 2 <span class="ml-text">ഉത്തരം: (b) 2</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>6. Which of the following describes compounds with the same molecular formula but different skeleton arrangements?<span class="ml-text">ഒരേ തന്മാത്രാ സമവാക്യവും എന്നാൽ വ്യത്യസ്ത കാർബൺ ശൃംഖലാ ഘടനയുമുള്ള സംയുക്തങ്ങളെ താഴെ പറയുന്നവയിൽ ഏതാണ് സൂചിപ്പിക്കുന്നത്?</span></p>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) Position Isomers <span class="ml-text">(a) സ്ഥാന ഐസോമറുകൾ (Position Isomers)</span></div>
+                <div class="option-item">(b) Functional Isomers <span class="ml-text">(b) ഫങ്ഷണൽ ഐസോമറുകൾ (Functional Isomers)</span></div>
+                <div class="option-item">(c) Chain Isomers <span class="ml-text">(c) ശൃംഖലാ ഐസോമറുകൾ (Chain Isomers)</span></div>
+                <div class="option-item">(d) Metamers <span class="ml-text">(d) മെറ്റാമറുകൾ (Metamers)</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m6')">Reveal Answer</button>
+            <div id="m6" class="answer">Answer: (c) Chain Isomers <span class="ml-text">ഉത്തരം: (c) ശൃംഖലാ ഐസോമറുകൾ</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>7. Select the correct IUPAC name for the following alkene:<span class="ml-text">താഴെ നൽകിയിരിക്കുന്ന ആൽക്കീന്റെ ശരിയായ IUPAC നാമം തിരഞ്ഞെടുക്കുക:</span></p>
+            <div class="structure">CH₃ — CH₂ — CH = CH — CH₃</div>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) Pent-3-ene <span class="ml-text">(a) പെന്റ്-3-ഈൻ</span></div>
+                <div class="option-item">(b) Pent-2-ene <span class="ml-text">(b) പെന്റ്-2-ഈൻ</span></div>
+                <div class="option-item">(c) But-2-ene <span class="ml-text">(c) ബ്യൂട്ട്-2-ഈൻ</span></div>
+                <div class="option-item">(d) Hex-2-ene <span class="ml-text">(d) ഹെക്സ്-2-ഈൻ</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m7')">Reveal Answer</button>
+            <div id="m7" class="answer">Answer: (b) Pent-2-ene <span class="ml-text">ഉത്തരം: (b) പെന്റ്-2-ഈൻ</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>8. What is the functional group in the following structure?<span class="ml-text">താഴെ നൽകിയിരിക്കുന്ന ഘടനയിലെ ഫങ്ഷണൽ ഗ്രൂപ്പ് ഏതാണ്?</span></p>
+            <div class="structure">CH₃ — CH₂ — CO — CH₃</div>
+            <div class="options-cluster-grid">
+                <div class="option-item">(a) Aldehyde <span class="ml-text">(a) ആൽഡിഹൈഡ്</span></div>
+                <div class="option-item">(b) Alcohol <span class="ml-text">(b) ആൽക്കഹോൾ</span></div>
+                <div class="option-item">(c) Ketone <span class="ml-text">(c) കീറ്റോൺ</span></div>
+                <div class="option-item">(d) Carboxyl <span class="ml-text">(d) കാർബോക്സിൽ ഗ്രൂപ്പ്</span></div>
+            </div>
+            <button class="btn-reveal" onclick="toggleAns('m8')">Reveal Answer</button>
+            <div id="m8" class="answer">Answer: (c) Ketone <span class="ml-text">ഉത്തരം: (c) കീറ്റോൺ</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>9. Molecular formula of Benzene?<span class="ml-text">ബെൻസീന്റെ തന്മാത്രാ സമവാക്യം?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m9')">View Answer</button>
+            <div id="m9" class="answer">C₆H₆ <span class="ml-text">C₆H₆</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>10. Monomer of PVC?<span class="ml-text">PVC-യുടെ മോണോമർ?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m10')">View Answer</button>
+            <div id="m10" class="answer">Vinyl Chloride <span class="ml-text">വിനൈൽ ക്ലോറൈഡ്</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>11. Suffix for Carboxylic Acids?<span class="ml-text">കാർബോക്സിലിക് ആസിഡുകളുടെ സഫിക്സ്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m11')">View Answer</button>
+            <div id="m11" class="answer">-oic acid <span class="ml-text">-oic acid (-ഓയിക് ആസിഡ്)</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>12. Number of Carbon atoms in But-1-yne?<span class="ml-text">But-1-yne-ൽ അടങ്ങിയിരിക്കുന്ന കാർബൺ ആറ്റങ്ങളുടെ എണ്ണം?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m12')">View Answer</button>
+            <div id="m12" class="answer">4 <span class="ml-text">4</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>13. Ethanol and Methoxymethane are...?<span class="ml-text">എഥനോളും മെഥോക്സിമീഥേനും ഏത് തരം ഐസോമറുകളാണ്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m13')">View Answer</button>
+            <div id="m13" class="answer">Functional Isomers <span class="ml-text">ഫങ്ഷണൽ ഐസോമറുകൾ</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>14. Word root for 1 Carbon?<span class="ml-text">1 കാർബൺ ആറ്റമുള്ള ശൃംഖലയുടെ വേഡ് റൂട്ട്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m14')">View Answer</button>
+            <div id="m14" class="answer">Meth <span class="ml-text">മെത്</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>15. Name for C₆H₅-COOH?<span class="ml-text">C₆H₅-COOH ന്റെ നാമം?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m15')">View Answer</button>
+            <div id="m15" class="answer">Benzoic Acid <span class="ml-text">ബെൻസോയിക് ആസിഡ്</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>16. Which pair represents position isomers?<span class="ml-text">താഴെ പറയുന്നവയിൽ പൊസിഷൻ ഐസോമറുകളെ പ്രതിനിധീകരിക്കുന്ന ജോഡി ഏതാണ്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m16')">View Answer</button>
+            <div id="m16" class="answer">Propan-1-ol and Propan-2-ol <span class="ml-text">പ്രൊപ്പൻ-1-ഓൾ, പ്രൊപ്പൻ-2-ഓൾ</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>17. General formula of Alkanes?<span class="ml-text">ആൽക്കെയ്നുകളുടെ പൊതുവായ തന്മാത്രാ സമവാക്യം?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m17')">View Answer</button>
+            <div id="m17" class="answer">C<span style="font-size:11px;">n</span>H<span style="font-size:11px;">2n+2</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>18. Identifying -CHO?<span class="ml-text">-CHO ഗ്രൂപ്പ് തിരിച്ചറിയുക?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m18')">View Answer</button>
+            <div id="m18" class="answer">Alkanal / Aldehyde <span class="ml-text">ആൽക്കനാൽ / ആൽഡിഹൈഡ്</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>19. Word root for C6?<span class="ml-text">6 കാർബൺ ഉള്ള ശൃംഖലയുടെ വേഡ് റൂട്ട്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m19')">View Answer</button>
+            <div id="m19" class="answer">Hex <span class="ml-text">ഹെക്സ്</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>20. Suffix for Aldehydes?<span class="ml-text">ആൽഡിഹైഡുകളുടെ സഫിക്സ്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m20')">View Answer</button>
+            <div id="m20" class="answer">-al <span class="ml-text">-al (-ആൽ)</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>21. Group number of P-block elements?<span class="ml-text">P-ബ്ലോക്ക് മൂലകങ്ങളുടെ ഗ്രൂപ്പ് നമ്പർ കണ്ടെത്തുന്ന വിധം?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m21')">View Answer</button>
+            <div id="m21" class="answer">Valence electrons + 10 <span class="ml-text">വാലൻസ് ഇലക്ട്രോണുകളുടെ എണ്ണം + 10</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>22. Bivalent linkage -O- is...?<span class="ml-text">ദ്വിസംയോജക ലിങ്കേജ് ആയ -O- ഏതാണ്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m22')">View Answer</button>
+            <div id="m22" class="answer">Ether linkage <span class="ml-text">ഈഥർ ലിങ്കേജ് (-O-)</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>23. Propanone and Propanal are...?<span class="ml-text">പ്രൊപ്പനോണും പ്രൊപ്പനാലും ഏതുതരം ഐസോമറുകളാണ്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m23')">View Answer</button>
+            <div id="m23" class="answer">Functional Isomers <span class="ml-text">ഫങ്ഷണൽ ഐസോമറുകൾ</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>24. Saturated hydrocarbon with 5 carbons name?<span class="ml-text">5 കാർബണുകളുള്ള പൂരിത ഹൈഡ്രോകാർബണിന്റെ പേര്?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m24')">View Answer</button>
+            <div id="m24" class="answer">Pentane <span class="ml-text">പെന്റേൻ</span></div>
+        </div>
+        
+        <div class="q-box">
+            <p>25. Identifying Pentan-2-one from structure...?<span class="ml-text">Pentan-2-one-ന്റെ ഘടന തിരിച്ചറിയുക...?</span></p> 
+            <button class="btn-reveal" onclick="toggleAns('m25')">View Answer</button>
+            <div id="m25" class="answer">CH3-CO-CH2-CH2-CH3 <span class="ml-text">CH3-CO-CH2-CH2-CH3</span></div>
+        </div>
+
+        <h2>Part 2: Assertion-Reason Questions</h2>
+        <p style="font-size:14px; color:#475569; margin-bottom: 20px;"><i>(A: Both true/R explains A | B: Both true/R not explain | C: A true R false | D: A false R true)</i></p>
+
+        <div class="q-box">
+            <p>26. <b>Assertion (A):</b> The compound CH₃—CH₂—CH₂—OH is named Propan-1-ol.<br>
+               <b>Reason (R):</b> The carbon chain is numbered such that the functional group gets the lowest position.
+               <span class="ml-text"><b>പ്രസ്താവന (A):</b> CH₃—CH₂—CH₂—OH എന്ന സംയുക്തത്തിന്റെ നാമം പ്രൊപ്പൻ-1-ഓൾ എന്നാണ്.<br><b>காரണം (R):</b> ഫങ്ഷണൽ ഗ്രൂപ്പിന് ഏറ്റവും ചെറിയ നമ്പർ ലഭിക്കുന്ന രീതിയിലാണ് കാർബൺ ശൃംഖല നമ്പറിങ് ചെയ്യുന്നത്.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('ar1')">Reveal Answer</button>
+            <div id="ar1" class="answer">Answer: (A) <span class="ml-text">ഉത്തരം: (A) പ്രസ്താവനയും കാരണവും ശരിയാണ്, കാരണം പ്രസ്താവനക്ക് വ്യക്തമായ വിശദീകരണമാണ്.</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>27. <b>Assertion (A):</b> Ethanol and Methoxymethane are metamers.<br>
+               <b>Reason (R):</b> They have different functional groups but the same molecular formula.
+               <span class="ml-text"><b>പ്രസ്താവന (A):</b> എഥനോളും മെഥോക്സിമീഥേനും മെറ്റാമറുകളാണ്.<br><b>காரണം (R):</b> അവയ്ക്ക് വ്യത്യസ്ത ഫങ്ഷണൽ ഗ്രൂപ്പുകളാണുള്ളത് എന്നാൽ തന്മാത്രാ സമവാക്യം ഒന്നാണ്.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('ar2')">Reveal Answer</button>
+            <div id="ar2" class="answer">Answer: (D) Assertion is false (They are functional isomers), Reason is true.<br><span class="ml-text">ഉത്തരം: (D) പ്രസ്താവന തെറ്റാണ് (അവ ഫങ്ഷണൽ ഐസോമറുകളാണ്), കാരണം ശരിയാണ്.</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>28. <b>Assertion (A):</b> Triple bonds are considered functional groups.<br>
+               <b>Reason (R):</b> They determine the chemical characteristics of alkynes.
+               <span class="ml-text"><b>പ്രസ്താവന (A):</b> ത്രിബന്ധനങ്ങൾ (Triple bonds) ഫങ്ഷണൽ ഗ്രൂപ്പുകളായി കണക്കാക്കപ്പെടുന്നു.<br><b>காரണം (R):</b> അവ ആൽക്കൈനുകളുടെ രാസഗുണങ്ങളെ നിർണ്ണയിക്കുന്നു.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('ar3')">Reveal Answer</button>
+            <div id="ar3" class="answer">Answer: (A) <span class="ml-text">ഉത്തരം: (A) പ്രസ്താവനയും കാരണവും ശരിയാണ്, കാരണം പ്രസ്താവനയുടെ ശരിയായ വിശദീകരണമാണ്.</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>29. <b>Assertion (A):</b> Pentane and 2-Methylbutane are isomers.<br>
+               <b>Reason (R):</b> They have different molecular formulas but same structure.
+               <span class="ml-text"><b>പ്രസ്താവന (A):</b> പെന്റേനും 2-മീഥൈൽബ്യൂട്ടേനും ഐസോമറുകളാണ്.<br><b>காரണം (R):</b> അവയ്ക്ക് വ്യത്യസ്ത തന്മാത്രാ സമവാക്യങ്ങളും എന്നാൽ ഒരേ ഘടനയുമാണുള്ളത്.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('ar4')">Reveal Answer</button>
+            <div id="ar4" class="answer">Answer: (C) Reason is false (They have SAME molecular formula).<br><span class="ml-text">ഉത്തരം: (C) പ്രസ്താവന ശരിയാണ് എന്നാൽ കാരണം തെറ്റാണ് (അവയ്ക്ക് ഒരേ തന്മാത്രാ സമവാക്യമാണുള്ളത്).</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>30. <b>Assertion (A):</b> Benzene is an alicyclic hydrocarbon.<br>
+               <b>Reason (R):</b> Aromatic compounds contain a specific ring structure like benzene.
+               <span class="ml-text"><b>പ്രസ്താവന (A):</b> ബെൻസീൻ ഒരു അലിസൈക്ലിക് ഹൈഡ്രോകാർബൺ ആണ്.<br><b>காரണം (R):</b>  ആരോമാറ്റിക് സംയുക്തങ്ങളിൽ ബെൻസീൻ പോലെയുള്ള പ്രത്യേക വളയ ഘടന അടങ്ങിയിരിക്കുന്നു.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('ar5')">Reveal Answer</button>
+            <div id="ar5" class="answer">Answer: (D) Assertion is false (Benzene is Aromatic).<br><span class="ml-text">ഉത്തരം: (D) പ്രസ്താവന തെറ്റാണ് (ബെൻസീൻ ഒരു ആരോമാറ്റിക് ഹൈഡ്രോകാർബൺ ആണ്), കാരണം ശരിയാണ്.</span></div>
+        </div>
+
+        <h2>Part 3: Fill in the Blanks</h2>
+
+        <div class="q-box">
+            <p>51. Compounds with the same molecular formula but different chemical and physical properties are called ________.<span class="ml-text">ഒരേ തന്മാത്രാ സമവാക്യവും എന്നാൽ വ്യത്യസ്ത രാസ-ഭൗതിക ഗുണങ്ങളുമുള്ള സംയുക്തങ്ങളെ ________ എന്ന് വിളിക്കുന്നു.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('f1')">Reveal Answer</button>
+            <div id="f1" class="answer">Answer: Isomers <span class="ml-text">ഉത്തരം: ഐസോമറുകൾ (Isomers)</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>52. The process of simple molecules joining together to form complex molecules is called ________.<span class="ml-text">ലളിതമായ തന്മാത്രകൾ കൂട്ടിച്ചേർന്ന് സങ്കീർണ്ണമായ തന്മാത്രകൾ ഉണ്ടാകുന്ന പ്രക്രിയയെ ________ എന്ന് വിളിക്കുന്നു.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('f2')">Reveal Answer</button>
+            <div id="f2" class="answer">Answer: Polymerisation <span class="ml-text">ഉത്തരം: പോളിമറൈസേഷൻ (Polymerisation)</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>53. The alkoxy group is the characteristic functional group of ________.<span class="ml-text">ആൽക്കോക്സി ഗ്രൂപ്പ് ഏതിന്റെ സവിശേഷമായ ഫങ്ഷണൽ ഗ്രൂപ്പാണ് ________.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('f3')">Reveal Answer</button>
+            <div id="f3" class="answer">Answer: Ethers <span class="ml-text">ഉത്തരം: ഈഥറുകൾ (Ethers)</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>54. A 5-8% aqueous solution of ethanoic acid is commonly known as ________.<span class="ml-text">എഥനോയിക് ആസിഡിന്റെ 5-8% ജലീയ ലായനി പൊതുവെ ________ എന്നറിയപ്പെടുന്നു.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('f4')">Reveal Answer</button>
+            <div id="f4" class="answer">Answer: Vinegar <span class="ml-text">ഉത്തരം: വിനാഗിരി (Vinegar)</span></div>
+        </div>
+
+        <div class="q-box">
+            <p>55. In the IUPAC system, the letter 'e' of the parent alkane is replaced with ________ for ketones.<span class="ml-text">IUPAC സമ്പ്രദായത്തിൽ, കീറ്റോണുകൾക്ക് പാരന്റ് ആൽക്കെയ്ന്റെ 'e' എന്ന അക്ഷരത്തിന് പകരം ചേർക്കുന്നത് ________ ആണ്.</span></p>
+            <button class="btn-reveal" onclick="toggleAns('f5')">Reveal Answer</button>
+            <div id="f5" class="answer">Answer: -one <span class="ml-text">ഉത്തരം: -one (-ഓൺ)</span></div>
+        </div>
+    </div>
+</div>
+
+<button class="btn-print" onclick="window.print()">🖨️ Print Document</button>
+
+<script>
+function toggleAns(id) {
+    var x = document.getElementById(id);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
+function toggleLanguage() {
+    var container = document.getElementById('print-container');
+    var btn = document.getElementById('toggle-ml-btn');
+    
+    if (container.classList.contains('hide-ml')) {
+        container.classList.remove('hide-ml');
+        btn.textContent = "Language: Malayalam ON";
+        btn.classList.add('active');
+    } else {
+        container.classList.add('hide-ml');
+        btn.textContent = "Language: Malayalam OFF";
+        btn.classList.remove('active');
+    }
+}
+</script>
+</body>
+</html>
