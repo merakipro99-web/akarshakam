@@ -130,7 +130,10 @@
         }
         .paper-header h2 { margin: 0; font-size: 12pt !important; border: none; padding: 0; background: transparent; text-transform: uppercase; font-weight: bold; }
         
-        .meta-grid { display: flex; justify-content: space-between; margin-top: 10px; font-weight: bold; font-size: 12pt !important; width: 100%; }
+        .meta-grid { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 10px; font-weight: bold; font-size: 12pt !important; width: 100%; text-align: left; }
+        .meta-col { display: flex; flex-direction: column; flex: 1; }
+        .meta-col.center { text-align: center; align-items: center; justify-content: flex-end; }
+        .meta-col.right { text-align: right; align-items: flex-end; }
         .divider { border-top: 2px solid #000; margin: 8px 0 15px 0; width: 100%; }
 
         /* Inside Document Sheet Containers */
@@ -209,12 +212,18 @@
                 <input type="text" id="input-subject" value="Physics" oninput="updateHeader()">
             </div>
             <div class="form-group">
-                <label>Max Time</label>
-                <input type="text" id="input-time" value="2 Hours" oninput="updateHeader()">
+                <label>Class</label>
+                <input type="text" id="input-class" value="Class 11" oninput="updateHeader()">
             </div>
+        </div>
+        <div class="flex-row">
             <div class="form-group">
                 <label>Max Marks</label>
                 <input type="text" id="input-marks" value="60" oninput="updateHeader()">
+            </div>
+            <div class="form-group">
+                <label>Max Time</label>
+                <input type="text" id="input-time" value="2 Hours" oninput="updateHeader()">
             </div>
         </div>
 
@@ -237,7 +246,7 @@
                 <label style="color:var(--accent-color); font-weight:bold;">1. Customize AI Blueprint Prompt:</label>
                 <div class="flex-row">
                     <div class="form-group">
-                        <label>Class</label>
+                        <label>Class Blueprint</label>
                         <input type="text" id="p-cfg-class" value="Class 11" oninput="regenerateAiPrompt()">
                     </div>
                     <div class="form-group">
@@ -347,9 +356,16 @@
                 <h1 id="p-school">BASELIOS VIDYANIKETHAN SENIOR SECONDARY SCHOOL, VETTICKAL</h1>
                 <h2 id="p-exam">PERIODIC ASSESSMENT</h2>
                 <div class="meta-grid">
-                    <span id="p-time">Time: 2 Hours</span>
-                    <span id="p-subject">Subject: Physics</span>
-                    <span id="p-marks">Max Marks: 60</span>
+                    <div class="meta-col">
+                        <span id="p-class">Class: Class 11</span>
+                    </div>
+                    <div class="meta-col center">
+                        <span id="p-subject">Physics</span>
+                    </div>
+                    <div class="meta-col right">
+                        <span id="p-marks">Max Marks: 60</span>
+                        <span id="p-time">Time: 2 Hours</span>
+                    </div>
                 </div>
             </div>
             <div class="divider"></div>
@@ -400,9 +416,10 @@
         function updateHeader() {
             document.getElementById('p-school').innerText = document.getElementById('input-school').value;
             document.getElementById('p-exam').innerText = document.getElementById('input-exam').value.toUpperCase();
-            document.getElementById('p-subject').innerText = "Subject: " + document.getElementById('input-subject').value;
-            document.getElementById('p-time').innerText = "Time: " + document.getElementById('input-time').value;
+            document.getElementById('p-subject').innerText = document.getElementById('input-subject').value;
+            document.getElementById('p-class').innerText = "Class: " + document.getElementById('input-class').value;
             document.getElementById('p-marks').innerText = "Max Marks: " + document.getElementById('input-marks').value;
+            document.getElementById('p-time').innerText = "Time: " + document.getElementById('input-time').value;
         }
 
         function regenerateAiPrompt() {
@@ -531,14 +548,10 @@
             paperElements[index].marks = value;
         }
 
-        // Complete Stable Button Sizing Step Calculation Engine
         function stepImageSize(index, stepDirection, imgType) {
             const currentSize = imgType === 'qs' ? (paperElements[index].imgWidth || 150) : (paperElements[index].ansImgWidth || 150);
-            
-            // Steps of 15px per click context changes
             let newSize = stepDirection === 'up' ? (currentSize + 15) : (currentSize - 15);
             
-            // Constrain constraints bounds checking
             if(newSize < 30) newSize = 30;
             if(newSize > 500) newSize = 500;
 
