@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Current Electricity - Master Question Bank | De AASH Study Centre</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                renderActions: {
+                    addMenu: [] 
+                }
+            },
+            chtml: {
+                displayAlign: 'left'
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js" id="MathJax-script" async></script>
+    
+    <style>
+        :root {
+            --brand-blue: #0099ff;
+            --brand-orange: #ff6600;
+            --brand-dark: #1e293b;
+            --brand-light: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--brand-light); color: var(--text-main); line-height: 1.4; padding-bottom: 60px; }
+
+        header {
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #0f172a 100%);
+            color: white; padding: 20px; text-align: center;
+            border-bottom: 4px solid var(--brand-orange);
+        }
+        .logo-container img { max-height: 65px; margin-bottom: 8px; }
+        header h1 { font-size: 1.8rem; margin-bottom: 4px; }
+        header h2 { font-size: 1rem; color: var(--brand-blue); font-weight: 400; margin-bottom: 10px; }
+        .promo-banner {
+            background: rgba(255, 102, 0, 0.12); border: 1px solid var(--brand-orange);
+            padding: 6px 12px; border-radius: 4px; font-size: 0.85rem;
+        }
+        .promo-banner a { color: var(--brand-blue); text-decoration: none; font-weight: bold; }
+
+        .controls-dashboard {
+            background: white; padding: 10px 15px; margin: 12px auto; max-width: 1200px;
+            border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
+            border-left: 4px solid var(--brand-blue);
+        }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+        .tab-btn {
+            background: #f1f5f9; border: 1px solid var(--border-color); padding: 5px 10px;
+            border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 500; transition: all 0.15s;
+        }
+        .tab-btn:hover, .tab-btn.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); }
+        .action-group { display: flex; gap: 6px; }
+        .action-btn {
+            padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;
+            font-weight: bold; font-size: 0.8rem; transition: all 0.15s;
+        }
+        .btn-print-clean { background-color: var(--brand-dark); color: white; }
+        .btn-print-ans { background-color: var(--brand-orange); color: white; }
+
+        .qbank-container { max-width: 1200px; margin: 0 auto; padding: 0 12px; }
+        .section-wrapper { margin-bottom: 25px; }
+        .section-title {
+            background-color: var(--brand-dark); color: white; padding: 8px 12px;
+            border-radius: 4px; margin-bottom: 12px; border-right: 4px solid var(--brand-orange); font-size: 1.15rem;
+        }
+        .case-passage {
+            background-color: #f1f5f9; border-left: 3px solid var(--brand-dark);
+            padding: 12px; margin-bottom: 12px; border-radius: 0 4px 4px 0; font-size: 0.9rem; line-height: 1.5;
+        }
+
+        .card-question {
+            background-color: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 4px; padding: 12px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+        }
+        .q-header { font-weight: 600; font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; display: flex; gap: 6px; }
+        .q-num { color: var(--brand-orange); white-space: nowrap; }
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 6px; margin: 10px 0; }
+        @media(min-width: 768px) { .options-grid { grid-template-columns: 1fr 1fr; } }
+        .option-item {
+            border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px;
+            background-color: #fafafa; font-size: 0.85rem;
+        }
+
+        .btn-reveal {
+            background: none; border: 1px solid var(--brand-blue); color: var(--brand-blue);
+            padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.75rem;
+        }
+        .btn-reveal:hover { background-color: var(--brand-blue); color: white; }
+        
+        .ans-container {
+            margin-top: 10px; padding: 10px; background-color: #f0fdf4;
+            border-left: 3px solid #16a34a; border-radius: 0 4px 4px 0; display: none;
+        }
+        .ans-container.visible { display: block; }
+        .ans-title { font-weight: 700; color: #14532d; margin-bottom: 2px; font-size: 0.85rem; }
+        .ans-body { font-size: 0.85rem; }
+
+        .schematic-svg { max-width: 240px; height: auto; margin: 6px 0; display: block; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; }
+
+        /* ==========================================================================
+           ULTRA-COMPACT PRINT CONTEXT STYLE ENGINE (MINIMIZES A4 PAGES)
+           ========================================================================== */
+        @media print {
+            @page { size: A4 portrait; margin: 8mm 6mm 8mm 6mm; }
+            body { background: #fff; color: #000; font-size: 10px; padding: 0; line-height: 1.25; }
+            header, .controls-dashboard, .btn-reveal, .promo-banner { display: none !important; }
+            
+            .qbank-container { width: 100%; max-width: 100%; padding: 0; }
+            .section-wrapper { margin-bottom: 8px; page-break-inside: auto; }
+            .section-title {
+                background: transparent !important; color: #000 !important; border: none !important;
+                border-bottom: 1.2px solid #000 !important; padding: 1px 0 !important;
+                margin-bottom: 6px !important; font-size: 11px !important; font-weight: 700 !important;
+                page-break-after: avoid; page-break-inside: avoid;
+            }
+            .case-passage {
+                background: transparent !important; border: 0.8px solid #475569 !important;
+                padding: 5px !important; font-size: 9.5px !important; margin-bottom: 6px !important;
+            }
+            .card-question {
+                background: transparent !important; border: none !important; border-bottom: 0.4px solid #cbd5e1 !important;
+                box-shadow: none !important; padding: 4px 0 !important; margin-bottom: 4px !important;
+                page-break-inside: avoid;
+            }
+            .q-header { font-size: 10px !important; margin-bottom: 3px !important; }
+            .options-grid { grid-template-columns: 1fr 1fr 1fr 1fr !important; gap: 3px !important; margin: 3px 0 !important; }
+            .option-item { background: transparent !important; border: none !important; padding: 0 !important; font-size: 9.5px !important; }
+            
+            #sec-mcq .options-grid, #sec-ar .options-grid { grid-template-columns: 1fr 1fr !important; }
+
+            .ans-container {
+                background: transparent !important; border: none !important; border-left: 1.2px dashed #16a34a !important;
+                padding: 1px 0 1px 6px !important; margin-top: 3px !important; font-size: 9px !important;
+                color: #14532d !important; page-break-inside: avoid;
+            }
+            .ans-title { font-size: 9px !important; font-weight: 700; }
+            .ans-body { font-size: 9px !important; }
+            .schematic-svg { max-width: 140px !important; margin: 3px 0 !important; border: 0.4px solid #000; }
+            
+            .print-force-hide { display: none !important; }
+            .print-force-show { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://aash.app/static/media/wl_client_images/b6ada47b29834a488f66cab0ae4bf840.png" alt="De AASH Study Centre Logo">
+        </div>
+        <h1>De AASH Study Centre</h1>
+        <h2>Physics Excellence Interactive Question Bank: Current Electricity</h2>
+        <div class="promo-banner">
+            🎯 Level up! Access comprehensive online mock tests and animated standard video modules at <a href="https://aash.app/" target="_blank">aash.app</a>!
+        </div>
+    </header>
+
+    <div class="controls-dashboard">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="filterSection('all')">Show All Sections</button>
+            <button class="tab-btn" onclick="filterSection('mcq')">MCQs</button>
+            <button class="tab-btn" onclick="filterSection('ar')">Assertion-Reason</button>
+            <button class="tab-btn" onclick="filterSection('obj')">Objective/VSA</button>
+            <button class="tab-btn" onclick="filterSection('sai')">Short Answer I</button>
+            <button class="tab-btn" onclick="filterSection('saii')">Short Answer II</button>
+            <button class="tab-btn" onclick="filterSection('case')">Case Studies</button>
+            <button class="tab-btn" onclick="filterSection('la')">Long Answers</button>
+        </div>
+        <div class="action-group">
+            <button class="action-btn btn-print-clean" onclick="printEngine(false)">🖨️ Print Exam Sheet</button>
+            <button class="action-btn btn-print-ans" onclick="printEngine(true)">📜 Print Answer Key</button>
+        </div>
+    </div>
+
+    <main class="qbank-container">
+
+        <section id="sec-mcq" class="section-wrapper">
+            <h2 class="section-title">Section A: Multiple Choice Questions (20 Questions)</h2>
+            
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q1.</span>
+                    <span>A steady current flows through a metallic conductor of non-uniform cross-section. Which of the following quantities remains constant along the length of the conductor?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) Drift velocity</div>
+                    <div class="option-item">B) Current density</div>
+                    <div class="option-item">C) Electric current</div>
+                    <div class="option-item">D) Electric field</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: C</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Charge conservation dictates that steady current \(I\) remains identical across all segments. Conversely, current density \(j = \frac{I}{A}\), electric field \(E = \frac{j}{\sigma}\), and drift speed \(v_d = \frac{I}{neA}\) depend directly on the local area and vary.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q2.</span>
+                    <span>A wire of resistance \(R\) is stretched uniformly to double its original length. What is its new electrical resistance?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(R\)</div>
+                    <div class="option-item">B) \(2R\)</div>
+                    <div class="option-item">C) \(4R\)</div>
+                    <div class="option-item">D) \(R/2\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: C</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Total volume \(V = A \cdot l\) is conserved. If length doubles (\(l' = 2l\)), area is halved (\(A' = \frac{A}{2}\)).
+                        \[ R' = \rho \frac{l'}{A'} = \rho \frac{2l}{A/2} = 4R \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q3.</span>
+                    <span>How does the drift velocity \(v_d\) of free electrons vary with the applied electric field \(E\)?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(v_d \propto \sqrt{E}\)</div>
+                    <div class="option-item">B) \(v_d \propto E\)</div>
+                    <div class="option-item">C) \(v_d \propto E^2\)</div>
+                    <div class="option-item">D) \(v_d\) is independent of \(E\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: B</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Under standard travel profiles, \(v_d = \left(\frac{e\tau}{m}\right)E\), which directly establishes that \(v_d \propto E\).
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q4.</span>
+                    <span>Two copper wires have lengths in the ratio \(1:3\) and areas in the ratio \(3:1\). The ratio of their electrical resistivities is:</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(1:1\)</div>
+                    <div class="option-item">B) \(1:9\)</div>
+                    <div class="option-item">C) \(9:1\)</div>
+                    <div class="option-item">D) \(1:3\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: A</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Resistivity (\(\rho\)) is an intrinsic property. It depends purely on the material type and temperature, not on dimensions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q5.</span>
+                    <span>With an increase in temperature, the relaxation time (\(\tau\)) of free electrons inside a metal:</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) Increases</div>
+                    <div class="option-item">B) Decreases</div>
+                    <div class="option-item">C) Remains constant</div>
+                    <div class="option-item">D) First increases, then decreases</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: B</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Higher temperatures cause lattice ions to vibrate with greater amplitudes, increasing collision frequency and decreasing relaxation time \(\tau\).
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q6.</span>
+                    <span>The SI unit of charge carrier mobility (\(\mu\)) is:</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(\text{m}^2 \text{V}^{-1} \text{s}^{-1}\)</div>
+                    <div class="option-item">B) \(\text{m} \text{V}^{-1} \text{s}^{-2}\)</div>
+                    <div class="option-item">C) \(\Omega \cdot \text{m}\)</div>
+                    <div class="option-item">D) \(\text{A} \cdot \text{m}^{-2}\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: A</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Mobility is defined as \(\mu = \frac{v_d}{E}\). Units evaluate to \(\frac{\text{m/s}}{\text{V/m}} = \text{m}^2\text{V}^{-1}\text{s}^{-1}\).
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q7.</span>
+                    <span>A carbon resistor has color bands: Yellow, Violet, Brown, and Gold. Its nominal resistance value is:</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(47 \Omega \pm 5\%\)</div>
+                    <div class="option-item">B) \(470 \Omega \pm 5\%\)</div>
+                    <div class="option-item">C) \(4.7 \text{ k}\Omega \pm 10\%\)</div>
+                    <div class="option-item">D) \(470 \Omega \pm 10\%\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: B</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Yellow = 4, Violet = 7, Brown = \(10^1\), Gold = \(\pm 5\%\). Combined: \(47 \times 10^1 = 470\,\Omega \pm 5\%\).
+                        <svg class="schematic-svg" viewBox="0 0 200 35">
+                            <rect x="10" y="5" width="160" height="20" fill="#cbd5e1" rx="4"/>
+                            <rect x="30" y="5" width="8" height="20" fill="yellow"/>
+                            <rect x="50" y="5" width="8" height="20" fill="purple"/>
+                            <rect x="70" y="5" width="8" height="20" fill="brown"/>
+                            <rect x="120" y="5" width="8" height="20" fill="gold"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q8.</span>
+                    <span>An electric bulb is rated at \(100\text{ W}\) for a \(220\text{ V}\) supply. The filament resistance is:</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(220 \Omega\)</div>
+                    <div class="option-item">B) \(484 \Omega\)</div>
+                    <div class="option-item">C) \(100 \Omega\)</div>
+                    <div class="option-item">D) \(242 \Omega\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: B</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Calculated using \(R = \frac{V^2}{P} = \frac{220 \times 220}{100} = 484\,\Omega\).
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q9.</span>
+                    <span>Two bulbs of power \(25\text{ W}\) and \(100\text{ W}\) (\(220\text{ V}\)) are connected in series across a \(220\text{ V}\) line. Which bulb glows brighter?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(100\text{ W}\) bulb</div>
+                    <div class="option-item">B) \(25\text{ W}\) bulb</div>
+                    <div class="option-item">C) Both glow with identical brightness</div>
+                    <div class="option-item">D) Neither bulb will operate</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: B</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> Resistance \(R = \frac{V^2}{P}\), so \(R_{25\text{W}} > R_{100\text{W}}\). In a series circuit, current \(I\) is constant. Because \(P_{\text{real}} = I^2 R\), the \(25\text{ W}\) bulb dissipates more power and glows brighter.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header">
+                    <span class="q-num">Q10.</span>
+                    <span>An example of a non-ohmic device is:</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item">A) Copper wire</div>
+                    <div class="option-item">B) Manganin wire</div>
+                    <div class="option-item">C) Semiconductor diode</div>
+                    <div class="option-item">D) Nichrome element</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-title">Correct Option: C</div>
+                    <div class="ans-body">
+                        <strong>Explanation:</strong> A semiconductor diode displays non-linear, asymmetric current-voltage curves, making it non-ohmic.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q11.</span><span>Kirchhoff's first law (\(\sum I = 0\)) at an electrical junction is a direct manifestation of the conservation of:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) Energy</div><div class="option-item">B) Linear momentum</div>
+                    <div class="option-item">C) Electric charge</div><div class="option-item">D) Mass</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: C</div><div class="ans-body"><strong>Explanation:</strong> Charge cannot accumulate at a steady-state junction, so input current must equal output current.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q12.</span><span>Kirchhoff's loop rule (\(\sum \Delta V = 0\)) is based on the conservation of:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) Charge</div><div class="option-item">B) Energy</div>
+                    <div class="option-item">C) Mass</div><div class="option-item">D) Momentum</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: B</div><div class="ans-body"><strong>Explanation:</strong> The electrostatic field is conservative. Moving a test charge around any closed loop results in a net work done of zero.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q13.</span><span>In a balanced Wheatstone bridge, if the positions of the galvanometer and the battery are interchanged, the balance condition:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) Changes completely</div><div class="option-item">B) Remains unchanged</div>
+                    <div class="option-item">C) Becomes invalid</div><div class="option-item">D) Doubles its sensitivity</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: B</div><div class="ans-body"><strong>Explanation:</strong> Interchanging source and detector branches maintains identical bridge cross-ratio networks (\(\frac{P}{Q}=\frac{R}{S}\)).</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q14.</span><span>Ten identical cells, each of EMF \(E\) and internal resistance \(r\), are connected in series to form a closed loop. A voltmeter connected across any group of three cells reads:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(3E\)</div><div class="option-item">B) Zero</div>
+                    <div class="option-item">C) \(7E\)</div><div class="option-item">D) \(10E\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: B</div><div class="ans-body"><strong>Explanation:</strong> Total current is \(I = \frac{10E}{10r} = \frac{E}{r}\). Terminal voltage across three cells is \(V = 3E - 3Ir = 3E - 3\left(\frac{E}{r}\right)r = 0\text{ V}\).</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q15.</span><span>When two identical cells of EMF \(E\) and internal resistance \(r\) are connected in parallel, the effective internal resistance is:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(2r\)</div><div class="option-item">B) \(r\)</div>
+                    <div class="option-item">C) \(r/2\)</div><div class="option-item">D) \(2/r\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: C</div><div class="ans-body"><strong>Explanation:</strong> Solved using parallel rules: \(\frac{1}{r_{\text{eq}}} = \frac{1}{r} + \frac{1}{r} = \frac{2}{r} \implies r_{\text{eq}} = \frac{r}{2}\).</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q16.</span><span>A potentiometer is superior to a standard voltmeter for measuring cell EMF because:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) It has smaller resistance</div><div class="option-item">B) It draws no current at the null point</div>
+                    <div class="option-item">C) It calculates values directly</div><div class="option-item">D) It uses alternating current</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: B</div><div class="ans-body"><strong>Explanation:</strong> By operating at a null-balance point, it avoids pulling current from the test cell, which eliminates internal voltage drops (\(Ir\)) and measures true open-circuit EMF.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q17.</span><span>The temperature coefficient of resistance (\(\alpha\)) is negative for which group of materials?</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) Copper, Silver, Aluminium</div><div class="option-item">B) Silicon, Germanium, Carbon</div>
+                    <div class="option-item">C) Nichrome, Manganin, Constantan</div><div class="option-item">D) Iron, Cobalt, Nickel</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: B</div><div class="ans-body"><strong>Explanation:</strong> In semiconductors, heat breaks covalent bonds, which increases charge carrier density (\(n\)) exponentially and lowers overall resistance.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q18.</span><span>A steady current of \(8\text{ mA}\) flows through a wire. The total number of electrons crossing a cross-section in \(10\text{ seconds}\) is:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(5.0 \times 10^{17}\)</div><div class="option-item">B) \(1.6 \times 10^{19}\)</div>
+                    <div class="option-item">C) \(6.25 \times 10^{18}\)</div><div class="option-item">D) \(8.0 \times 10^{16}\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: A</div><div class="ans-body"><strong>Explanation:</strong> Derived using \(n = \frac{It}{e} = \frac{(8 \times 10^{-3}) \times 10}{1.6 \times 10^{-19}} = 5.0 \times 10^{17}\).</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q19.</span><span>Standard standard resistors are constructed using alloys like Manganin primarily because they have:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) High resistivity and a near-zero temperature coefficient</div><div class="option-item">B) Low resistivity and structural limits</div>
+                    <div class="option-item">C) Highly non-linear properties</div><div class="option-item">D) Superconducting traits at room temperature</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: A</div><div class="ans-body"><strong>Explanation:</strong> A near-zero \(\alpha\) ensures resistance values remain highly stable during operational temperature shifts.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q20.</span><span>The terminal potential difference \(V\) of a cell with EMF \(E\) and internal resistance \(r\) when delivering current \(I\) is:</span></div>
+                <div class="options-grid">
+                    <div class="option-item">A) \(V = E + Ir\)</div><div class="option-item">B) \(V = E - Ir\)</div>
+                    <div class="option-item">C) \(V = I^2 r\)</div><div class="option-item">D) \(V = E\)</div>
+                </div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: B</div><div class="ans-body"><strong>Explanation:</strong> Delivering current causes a potential drop across the cell's internal resistance, which reduces terminal voltage.</div></div>
+            </div>
+        </section>
+
+        <section id="sec-ar" class="section-wrapper">
+            <h2 class="section-title">Section B: Assertion-Reason Questions (20 Questions)</h2>
+            <div class="case-passage">
+                <strong>Directions:</strong> Select:<br>
+                <strong>(a)</strong> If both (A) and (R) are true and (R) is the correct explanation of (A).<br>
+                <strong>(b)</strong> If both (A) and (R) are true but (R) is NOT the correct explanation of (A).<br>
+                <strong>(c)</strong> If (A) is true but (R) is false.<br>
+                <strong>(d)</strong> If (A) is false and (R) is also false.
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q21.</span><span><strong>Assertion (A):</strong> Electric current is a scalar quantity even though it has a defined direction of flow.<br><strong>Reason (R):</strong> Current values combine using simple algebraic addition rather than vector rules.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: (a)</div><div class="ans-body"><strong>Explanation:</strong> Current does not follow vector algebra (like the parallelogram law); currents at junctions combine using simple scalar arithmetic.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q22.</span><span><strong>Assertion (A):</strong> Without an applied electric field, the net current through a metallic block is zero.<br><strong>Reason (R):</strong> Free electrons inside a metal stop moving entirely when no electric field is present.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: (c)</div><div class="ans-body"><strong>Explanation:</strong> Free electrons are in continuous random thermal motion (\(\sim 10^5\text{ m/s}\\)), but their paths are completely isotropic, making the net macroscopic flow zero.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q23.</span><span><strong>Assertion (A):</strong> Circuits turn on instantly when switched, despite slow electron drift velocities (\(\sim 10^{-4}\text{ m/s}\)).<br><strong>Reason (R):</strong> The electric field travels through the wire at nearly the speed of light, causing electrons to drift simultaneously.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: (a)</div><div class="ans-body"><strong>Explanation:</strong> The internal electric field propagates through the wire at electromagnetic wave speeds, setting electrons in motion across the entire circuit almost instantly.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q24.</span><span><strong>Assertion (A):</strong> Conductor resistance increases when temperature is raised.<br><strong>Reason (R):</strong> Raising the temperature increases the number density of conduction electrons inside a metal.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: (c)</div><div class="ans-body"><strong>Explanation:</strong> Carrier density \(n\) remains constant in metals. Higher temperatures cause stronger lattice vibrations, shortening the relaxation time \(\tau\) and increasing resistance.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q25.</span><span><strong>Assertion (A):</strong> Manganin is widely used to construct standard resistance coils.<br><strong>Reason (R):</strong> Manganin exhibits a very high temperature coefficient of resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-title">Correct Option: (c)</div><div class="ans-body"><strong>Explanation:</strong> Manganin is selected specifically because it has an extremely low, near-zero temperature coefficient of resistance, making its resistance highly stable.</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q26.</span><span><strong>Assertion (A):</strong> A current-carrying wire remains electrically neutral overall.<br><strong>Reason (R):</strong> At any instant, the rate of electrons entering equals the rate of electrons exiting.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q27.</span><span><strong>Assertion (A):</strong> A cell of high EMF must always have a large internal resistance.<br><strong>Reason (R):</strong> Internal resistance depends entirely on chemical compositions.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (d)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q28.</span><span><strong>Assertion (A):</strong> Connecting cells in parallel increases the overall current capacity.<br><strong>Reason (R):</strong> Equivalent internal resistance decreases when components are arranged in parallel.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q29.</span><span><strong>Assertion (A):</strong> Kirchhoff's junction rule applies to both steady and varying currents.<br><strong>Reason (R):</strong> The junction rule is based on the law of conservation of energy.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (c)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q30.</span><span><strong>Assertion (A):</strong> Commercial potentiometer wires are made of copper.<br><strong>Reason (R):</strong> Copper has low resistivity and high temperature coefficient parameters.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (d)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q31.</span><span><strong>Assertion (A):</strong> Terminal potential difference is less than cell EMF during discharge.<br><strong>Reason (R):</strong> Potential drops occur across internal resistance within the chemical electrolyte.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q32.</span><span><strong>Assertion (A):</strong> Cutting a wire in half cuts its resistivity parameter in half.<br><strong>Reason (R):</strong> Resistivity depends directly on geometric length dimensions.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (d)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q33.</span><span><strong>Assertion (A):</strong> Electron drift speed is small, yet current density can be large.<br><strong>Reason (R):</strong> Metals contain a vast free conduction electron density (\(\sim 10^{28}\text{ m}^{-3}\)).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q34.</span><span><strong>Assertion (A):</strong> Ohmic conductors display linear straight-line \(V-I\) graphs.<br><strong>Reason (R):</strong> Resistance of an ohmic conductor remains constant independent of applied voltage.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q35.</span><span><strong>Assertion (A):</strong> Semiconductor resistance drops when temperature is increased.<br><strong>Reason (R):</strong> Thermal excitation reduces lattice vibration profiles significantly.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (c)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q36.</span><span><strong>Assertion (A):</strong> Heating elements use alloys like Nichrome instead of copper.<br><strong>Reason (R):</strong> Nichrome has high resistivity and does not oxidize at high temperatures.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q37.</span><span><strong>Assertion (A):</strong> Parallel equivalent resistance is smaller than the smallest individual branch resistance.<br><strong>Reason (R):</strong> Parallel loops provide alternative paths for current flow, reducing overall obstruction.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q38.</span><span><strong>Assertion (A):</strong> Household fuses have high melting points.<br><strong>Reason (R):</strong> Fuses must remain intact during power surges.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (d)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q39.</span><span><strong>Assertion (A):</strong> Electromotive force of a cell forms a conservative field property.<br><strong>Reason (R):</strong> Loop work depends on the geometric path taken across networks.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">(c)</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q40.</span><span><strong>Assertion (A):</strong> Meter bridge balance points are preferred near the middle of the wire.<br><strong>Reason (R):</strong> Middle positioning balances the arms and minimizes end resistance errors.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-title">Correct Option: (a)</div></div>
+            </div>
+        </section>
+
+        <section id="sec-obj" class="section-wrapper">
+            <h2 class="section-title">Section C: Objective & Very Short Answer Questions (20 Questions)</h2>
+            
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q41.</span><span>Define electrical current density and state its SI unit.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Current density (\(j\)) is current per unit area perpendicular to flow direction (\(j = \frac{I}{A}\)). Unit: \(\text{A/m}^2\). It is a vector.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q42.</span><span>Write the vector form of Ohm's law.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">\(\vec{j} = \sigma \vec{E}\), where \(\vec{j}\) is current density, \(\sigma\) is conductivity, and \(\vec{E}\) is electric field.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q43.</span><span>What is the net charge on a wire that is carrying an electrical current?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Zero. At any instant, moving negative electrons exactly balance the positive lattice ions.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q44.</span><span>How does the electrical conductivity of an electrolyte change with an increase in temperature?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Conductivity increases because higher temperatures decrease solvent viscosity, which increases ion mobility.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q45.</span><span>State the mathematical formula relating mobility (\(\mu\)) and relaxation time (\(\tau\)).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">\(\mu = \frac{e\tau}{m}\), where \(e\) is electronic charge and \(m\) is electron mass.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q46.</span><span>What is the current through the central galvanometer branch of a balanced Wheatstone bridge?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Zero (\(I_g = 0\)). The two bridge nodes across the arm share equal potentials.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q47.</span><span>How does semiconductor resistivity alter with absolute temperature parameters?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">It decreases exponentially because thermal energy breaks covalent bonds and generates more active charge carriers.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q48.</span><span>If the potential difference across a given conductor is doubled while keeping its temperature constant, how is the drift velocity affected?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Since \(v_d \propto E\) and \(E = \frac{V}{l}\), doubling the voltage doubles the internal field, which doubles the drift velocity.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q49.</span><span>What is the electrical resistance of an ideal voltmeter?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Infinite (\(\infty\,\Omega\)), which ensures it draws zero parallel current from the circuit under test.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q50.</span><span>What is the electrical resistance of an ideal ammeter?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Zero (\(0\,\Omega\)), which prevents it from causing a voltage drop when placed in series.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q51.</span><span>Name two materials that have a near-zero temperature coefficient of resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Manganin and Constantan (Eureka).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q52.</span><span>Identify the terminal condition of a cell when its terminal voltage \(V\) equals its electromotive force \(E\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Open-circuit state (\(I = 0\)). The battery is not delivering or receiving any current.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q53.</span><span>How does the relaxation time of electrons in a metal change when it is cooled down?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Relaxation time (\(\tau\)) increases because lower temperatures suppress lattice vibrations, reducing collision frequency.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q54.</span><span>What is the principal conservation law underlying Kirchhoff's Loop Rule?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">The Law of Conservation of Energy.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q55.</span><span>State the condition under which a cell delivers maximum power to an external load resistor \(R\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">When the external load resistance matches the cell's internal resistance (\(R = r\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q56.</span><span>Why is the wire of a slide meter bridge made of uniform cross-section?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">To maintain uniform resistance per unit length, allowing wire resistance to scale linearly with length (\(R \propto l\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q57.</span><span>Express electrical power density \(P/V\) in terms of current density \(j\) and resistivity \(\rho\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Power density \(= j^2 \rho\), derived from: \(\frac{I^2 R}{\text{Volume}} = \frac{(jA)^2 (\rho l / A)}{Al} = j^2 \rho\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q58.</span><span>What is the main advantage of a null-point method?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">It isolates the measurement from contact resistances or circuit loading because no current flows through the detection branch at balance.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q59.</span><span>Can terminal potential difference exceed a cell's rated EMF? If so, when?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Yes, when a cell is being charged by an external power source that drives current into the positive terminal: \(V = E + Ir\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q60.</span><span>What physical quantity is measured by the slope of a linear \(V-I\) graph?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">The electrical resistance (\(R\)) of the conductor.</div></div>
+            </div>
+        </section>
+
+        <section id="sec-sai" class="section-wrapper">
+            <h2 class="section-title">Section D: Short Answer Type I Questions (20 Questions)</h2>
+            
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q61.</span><span>Derive the basic relationship between electric current \(I\) and electron drift velocity \(v_d\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        Consider a conductor of length \(l\) and area \(A\). Let \(n\) be the free electron density.<br>
+                        Total volume \(= A \cdot l\). Total mobile charge \(Q = nAle\).<br>
+                        Time required for charge to clear the length: \(t = \frac{l}{v_d}\).<br>
+                        Using the definition of current:
+                        \[ I = \frac{Q}{t} = \frac{nAle}{l/v_d} = neAv_d \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q62.</span><span>A heating element made of Nichrome is connected to a \(230\text{ V}\) supply and draws an initial current of \(3.2\text{ A}\), which soon settles to a steady value of \(2.8\text{ A}\). If the room temperature is \(27.0^\circ\text{C}\), find the steady temperature of the element. (Take \(\alpha = 1.70 \times 10^{-4}\text{ }^\circ\text{C}^{-1}\)).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        Calculate initial and final resistances:<br>
+                        \(R_0 = \frac{230}{3.2} = 71.875\,\Omega\) and \(R_1 = \frac{230}{2.8} = 82.143\,\Omega\).<br>
+                        Using \(R_1 = R_0[1 + \alpha(T - T_0)]\):<br>
+                        \[ \frac{82.143}{71.875} - 1 = \alpha(T - 27) \implies 0.14285 = (1.70 \times 10^{-4})(T - 27) \]<br>
+                        \[ T - 27 = \frac{0.14285}{1.70 \times 10^{-4}} \approx 840.3^\circ\text{C} \implies T \approx 867.3^\circ\text{C} \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q63.</span><span>Explain why terminal potential difference drops when a cell supplies current to a circuit.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">When current flows, ions encounter resistance moving through the electrolyte. This internal resistance (\(r\)) creates an internal voltage drop equal to \(Ir\), which reduces terminal voltage: \(V = E - Ir\).</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q64.</span><span>A wire with a resistance of \(16\,\Omega\) is bent into a closed circle. Calculate the effective resistance between any two diametrically opposite points.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">The circle forms two semicircular paths in parallel, each with a resistance of \(\frac{16}{2} = 8\,\Omega\).
+                \[ R_{\text{eq}} = \frac{8 \times 8}{8 + 8} = 4\,\Omega \]</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q65.</span><span>Distinguish between electrical resistivity and electrical conductivity. State their relationship.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container"><div class="ans-body">Resistivity (\(\rho\)) measures a material's intrinsic opposition to current, whereas conductivity (\(\sigma\)) measures its intrinsic ability to conduct. They are reciprocals: \(\sigma = \frac{1}{\rho}\).</div></div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q66.</span><span>Why are copper and aluminium preferred for house wiring?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">They combine excellent electrical conductivity with flexibility and low cost, which minimizes energy losses (\(I^2 R\)) across grid nodes.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q67.</span><span>Why do gases require high-energy radiation like X-rays to conduct electricity?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Neutral gas molecules lack free charge carriers. High-energy radiation ionizes the gas atoms, releasing free electrons and ions to conduct current.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q68.</span><span>State Ohm's law and its main structural limitation.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(V \propto I\) provided physical conditions like temperature remain constant. It fails under significant self-heating or inside semiconductor layouts.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q69.</span><span>What is a thermistor? State one application.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">A temperature-sensitive semiconductor resistor with a high temperature coefficient. Commonly used for temperature sensing and thermal overload protection.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q70.</span><span>Resistors \(1\,\Omega, 2\,\Omega, 3\,\Omega\) are in series across \(12\text{ V}\). Find current.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(R_{\text{eq}} = 1+2+3 = 6\,\Omega \implies I = \frac{12}{6} = 2\text{ A}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q71.</span><span>Why is a potentiometer wire preferred over a standard voltmeter for cell calibration?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">It operates at a null point where no current flows, preventing internal voltage drops and ensuring an accurate open-circuit EMF measurement.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q72.</span><span>Define temperature coefficient of resistance and state its unit.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The fractional change in resistance per unit change in temperature (\(\alpha = \frac{\Delta R}{R_0 \Delta T}\)). Unit: \(\text{K}^{-1}\) or \(^\circ\text{C}^{-1}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q73.</span><span>A wire of resistance \(R\) is melted and recast to half its original radius. Find new resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Volume is conserved. Radius \(\rightarrow \frac{r}{2} \implies \text{Area} \rightarrow \frac{A}{4} \implies \text{Length} \rightarrow 4l\). Therefore, \(R' = \rho \frac{4l}{A/4} = 16R\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q74.</span><span>Explain how a cell's internal resistance changes over its operating lifespan.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">It increases over time due to electrolyte depletion and chemical accumulation on the electrode surfaces, which restricts ion movement.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q75.</span><span>What is negative dynamic resistance? Give an example of a device that exhibits it.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">A region where current decreases as voltage increases (\(\frac{\Delta V}{\Delta I} < 0\)). Observed in tunnel diodes and GaAs semiconductor systems.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q76.</span><span>Compare electron drift speed with random thermal speed inside a metal.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Thermal speed is large (\(\sim 10^5\text{ m/s}\)) but completely random, producing zero net flow. Drift speed is small (\(\sim 10^{-4}\text{ m/s}\)) but directional under an electric field, constituting net current.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q77.</span><span>Calculate the number of electrons passing per second through a \(100\,\Omega\) resistor across \(200\text{ V}\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(I = \frac{V}{R} = \frac{200}{100} = 2\text{ A}\). Electrons per second: \(n = \frac{I}{e} = \frac{2}{1.6 \times 10^{-19}} = 1.25 \times 10^{19}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q78.</span><span>State the network condition required to apply Kirchhoff's rules.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Applies to networks containing lumped components where charge does not build up at nodes and current configurations are steady.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q79.</span><span>Why do secondary cells yield higher currents than primary cells?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Secondary cells feature larger electrode surface areas placed closer together in highly conductive electrolytes, which minimizes internal resistance.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q80.</span><span>Why is resistance additive in a series configuration loop?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The same current \(I\) flows through each component, so the total voltage drop is the sum of individual drops: \(V = \sum I R_i = I \sum R_i \implies R_{\text{eq}} = \sum R_i\).</div></div>
+            </div>
+        </section>
+
+        <section id="sec-saii" class="section-wrapper">
+            <h2 class="section-title">Section E: Short Answer Type II Questions (20 Questions)</h2>
+            
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q81.</span><span>Deduce Ohm's law from microscopic electron mechanics and derive an expression for material resistivity (\(\rho\)).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        We begin with current \(I = neAv_d\) and electron acceleration \(a = \frac{eE}{m}\).<br>
+                        Drift velocity is given by \(v_d = a\tau = \frac{eE\tau}{m}\). Substituting \(E = \frac{V}{l}\):<br>
+                        \[ v_d = \frac{eV\tau}{ml} \implies I = neA\left(\frac{eV\tau}{ml}\right) = \left(\frac{ne^2A\tau}{ml}\right)V \]<br>
+                        Rearranging for voltage yields:
+                        \[ V = \left(\frac{m}{ne^2\tau} \cdot \frac{l}{A}\right)I \ Pand \]
+                        Comparing this with Ohm's law (\(V = IR\)) shows that \(R = \frac{m}{ne^2\tau}\frac{l}{A}\). Since \(R = \rho\frac{l}{A}\), resistivity is expressed as:
+                        \[ \rho = \frac{m}{ne^2\tau} \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q82.</span><span>Two cells of EMFs \(E_1, E_2\) and internal resistances \(r_1, r_2\) are connected in parallel. Derive expressions for equivalent EMF and resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        Let terminal voltage be \(V\). The individual branch currents are:<br>
+                        \(I_1 = \frac{E_1 - V}{r_1}\) and \(I_2 = \frac{E_2 - V}{r_2}\).<br>
+                        Total current \(I = I_1 + I_2\):
+                        \[ I = \frac{E_1 - V}{r_1} + \frac{E_2 - V}{r_2} = \left(\frac{E_1}{r_1} + \frac{E_2}{r_2}\right) - V\left(\frac{1}{r_1} + \frac{1}{r_2}\right) \]<br>
+                        Rearranging for \(V\) yields:
+                        \[ V = \frac{\frac{E_1}{r_1} + \frac{E_2}{r_2}}{\frac{1}{r_1} + \frac{1}{r_2}} - I\left(\frac{1}{\frac{1}{r_1} + \frac{1}{r_2}}\right) \]<br>
+                        Comparing this with the standard format \(V = E_{\text{eq}} - Ir_{\text{eq}}\) gives:
+                        \[ E_{\text{eq}} = \frac{E_1r_2 + E_2r_1}{r_1 + r_2}, \quad r_{\text{eq}} = \frac{r_1r_2}{r_1 + r_2} \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q83.</span><span>A network of 12 identical resistors, each of resistance \(1\,\Omega\), forms the edges of a cube. A \(10\text{ V}\) battery is connected across diagonally opposite corners. Find equivalent resistance using Kirchhoff's rules.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        Assume a total current of \(6I\) enters the input corner. By symmetry, it branches equally into three edges (\(2I\) each) meeting at that junction.<br>
+                        At the next set of nodes, each path splits into two directions, so those edges carry a current of \(I\). At the exit corner, the currents recombine into three paths of \(2I\) each, reconstructing the total current of \(6I\).<br>
+                        Apply Kirchhoff's loop rule along any path from the input corner to the diagonally opposite corner:
+                        \[ V = 2IR + IR + 2IR = 5IR \ Pand \]<br>
+                        Since total resistance satisfies \(V = 6I \cdot R_{\text{eq}}\), equating the expressions yields:
+                        \[ 6I \cdot R_{\text{eq}} = 5IR \implies R_{\text{eq}} = \frac{5}{6}R \]<br>
+                        Given \(R = 1\,\Omega\), the equivalent resistance is \(R_{\text{eq}} = \frac{5}{6}\,\Omega\).
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q84.</span><span>Explain the operation of a meter bridge to determine unknown resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Operates on the Wheatstone bridge principle. A sliding jockey locates a null deflection point at length \(l\) along a uniform wire, establishing the balance condition: \(\frac{X}{R} = \frac{l}{100-l} \implies X = R\frac{l}{100-l}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q85.</span><span>Derive thermal heat generation based on Joule's laws of heating.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The work done moving a charge is \(dW = VdQ = VIdt\). By energy conservation, this electrical energy is transferred to the lattice as heat: \(dH = VIdt = I^2Rdt \implies H = I^2Rt\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q86.</span><span>A potentiometer wire has length \(4\text{ m}\) and resistance \(8\,\Omega\). It is connected in series with a \(2\text{ V}\) accumulator and a resistor of \(12\,\Omega\). Find the potential gradient.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(R_{\text{total}} = 8 + 12 = 20\,\Omega \implies I_{\text{primary}} = \frac{2}{20} = 0.1\text{ A}\).<br> Voltage across wire: \(V_{\text{wire}} = 0.1 \times 8 = 0.8\text{ V}\). Potential gradient: \(k = \frac{0.8}{4} = 0.2\text{ V/m}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q87.</span><span>Describe an experiment to evaluate cell internal resistance via a potentiometer.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Find the open-circuit balance length \(l_1\) to determine EMF (\(E \propto l_1\)). Shunt the cell with a known resistance \(R\) and locate the new balance length \(l_2\) to determine terminal voltage (\(V \propto l_2\)). This yields internal resistance: \(r = R\left(\frac{l_1}{l_2}-1\right)\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q88.</span><span>Why is alloy resistivity less sensitive to temperature changes than pure metal resistivity?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Alloys have structurally disordered crystal lattices, which creates high baseline resistance from impurity scattering. This baseline scattering dominates over thermal lattice vibrations, meaning heating has a negligible effect on relaxation time (\(\tau\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q89.</span><span>Three identical cells (\(2\text{ V}, 0.3\,\Omega\)) in parallel drive a \(1.9\,\Omega\) load. Find current.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(E_{\text{eq}} = 2\text{ V}\), \(r_{\text{eq}} = \frac{0.3}{3} = 0.1\,\Omega\). Total current: \(I = \frac{E_{\text{eq}}}{R + r_{\text{eq}}} = \frac{2}{1.9 + 0.1} = 1\text{ A}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q90.</span><span>Derive conditions for maximum current from mixed groups (\(m\) rows, \(n\) cells per row).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Current is \(I = \frac{mnE}{mR + nr}\). The denominator can be rewritten as \((\sqrt{mR}-\sqrt{nr})^2 + 2\sqrt{mnRr}\). To maximize current, set the squared term to zero: \(\sqrt{mR} = \sqrt{nr} \implies R = \frac{nr}{m}\) (load resistance matches total internal resistance).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q91.</span><span>Why are bridge connecting strips constructed from thick copper elements?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Thick copper elements minimize lead resistance and contact errors, keeping bridge measurements accurate.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q92.</span><span>A wire is compressed to decrease length by \(10\%\) at constant volume. Find change in resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(l' = 0.9l \implies A' = \frac{A}{0.9}\) since volume is conserved. \(R' = \rho \frac{0.9l}{A/0.9} = 0.81R\). This represents a \(19\%\) decrease in resistance.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q93.</span><span>What are end errors in bridge setups? How are they countered?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Errors caused by contact resistance at copper joints and alignment shifts at wire ends. They are minimized by swapping the positions of resistors (\(X\) and \(R\)) and averaging the values.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q94.</span><span>Find power dissipated in a \(4\,\Omega\) resistor across a cell (\(12\text{ V}, 2\,\Omega\)).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(I = \frac{12}{4+2} = 2\text{ A} \implies P = I^2R = 2^2 \times 4 = 16\text{ W}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q95.</span><span>Why does a gas discharge tube display non-ohmic profiles?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Increasing voltage triggers rapid ionization, which exponentially increases charge carrier density and alters resistance across the plasma column.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q96.</span><span>Find electron drift speed in a wire with \(n = 8.5 \times 10^{28}\text{ m}^{-3}\), area \(2 \times 10^{-6}\text{ m}^2\), carrying \(3\text{ A}\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(v_d = \frac{I}{neA} = \frac{3.0}{8.5 \times 10^{28} \times 1.6 \times 10^{-19} \times 2 \times 10^{-6}} \approx 1.1 \times 10^{-4}\text{ m/s}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q97.</span><span>Describe how to compare cell EMF values using a potentiometer.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Find the balance length for each cell alternately. Since \(E_1 = kl_1\) and \(E_2 = kl_2\), dividing the expressions cancels the potential gradient and yields: \(\frac{E_1}{E_2} = \frac{l_1}{l_2}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q98.</span><span>An electric kettle boils water in 10 mins using coil 1, and 20 mins using coil 2. Find time required if both are connected in parallel.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">From \(H = \frac{V^2}{R}t\), we get \(R_1 \propto 10\) and \(R_2 \propto 20\). In parallel, \(\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} \implies \frac{1}{t_{\text{parallel}}} = \frac{1}{10} + \frac{1}{20} = \frac{3}{20} \implies t_{\text{parallel}} = \frac{20}{3} \approx 6.67\text{ mins}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q99.</span><span>Why is charging potential difference higher than rated EMF?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The external supply forces current into the positive terminal. The applied voltage must overcome the cell's internal EMF plus its internal resistance drop: \(V = E + Ir\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q100.</span><span>State how charge conservation leads directly to Kirchhoff's first law.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">In a steady state, electric charge cannot accumulate or dissipate at a junction node. Therefore, the total current entering a junction must equal the total current leaving it, meaning \(\sum I = 0\).</div></div>
+            </div>
+        </section>
+
+        <section id="sec-case" class="section-wrapper">
+            <h2 class="section-title">Section F: Case Study-Based Questions (4 Passages, 20 Sub-parts)</h2>
+            
+            <div class="case-passage">
+                <strong>Case Study 1: Microscopic Transport Theory</strong><br>
+                Free electrons inside metals exhibit random thermal motion. When an external electric field is applied, it exerts a steady electrostatic force that gives electrons a directional acceleration. Frequent collisions with vibrating lattice ions continually reset this directional motion. The net resulting movement is a slow drift velocity (\(v_d\)), and the average time between consecutive collisions is defined as the relaxation time (\(\tau\)).
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q101.</span><span>What is the typical order of magnitude of electron drift velocity?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(\sim 10^{-4}\text{ m/s}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q102.</span><span>How does relaxation time respond to an increase in lattice temperature?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">It decreases because stronger lattice vibrations increase the frequency of electron-ion collisions.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q103.</span><span>Why is net current zero without an external field?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Thermal motion is completely random, meaning electron velocity vectors cancel out symmetrically in all directions.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q104.</span><span>Write the equation for drift velocity in terms of relaxation time and electric field.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(v_d = \frac{eE\tau}{m}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q105.</span><span>Explain why material resistivity is inversely proportional to relaxation time.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Resistivity \(\rho = \frac{m}{ne^2\tau}\). Shorter relaxation times indicate more frequent collisions, which increases opposition to electron flow.</div></div>
+            </div>
+
+            <div class="case-passage">
+                <strong>Case Study 2: Real Energy Sources & Internal Resistances</strong><br>
+                Chemical cells maintain potential differences via internal redox pathways. Open-circuit voltage yields true electromotive force (\(E\)), but delivering current creates internal voltage drops across the electrolyte's internal resistance (\(r\)). Terminal voltage is given by \(V = E - Ir\).
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q106.</span><span>State when terminal voltage \(V\) exactly matches EMF \(E\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">When no current is drawn from the cell (\(I=0\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q107.</span><span>Calculate short-circuit current for a cell with \(E = 6\text{ V}\) and \(r = 1\,\Omega\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(I_{\text{sc}} = \frac{E}{r} = \frac{6}{1} = 6\text{ A}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q108.</span><span>State two structural parameters affecting cell internal resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The surface area of the electrodes and the distance between electrodes in the electrolyte.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q109.</span><span>What does the slope of a terminal voltage \(V\) versus current \(I\) plot represent?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The negative of the cell's internal resistance (\(-r\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q110.</span><span>State the voltage equation when a cell is being charged.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(V = E + Ir\).</div></div>
+            </div>
+
+            <div class="case-passage">
+                <strong>Case Study 3: Bridge Balances & Core Metric Variants</strong><br>
+                The Wheatstone Bridge uses an arm resistance ratio loop to evaluate unknown electrical components. The slide meter bridge uses a one-meter uniform wire where a sliding jockey locates a null-balance point along the scale.
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q111.</span><span>State the standard balance cross-ratio for a Wheatstone bridge.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(\frac{P}{Q} = \frac{R}{S}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q112.</span><span>Why is a middle balance position preferred in slide setups?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">It maximizes measurement sensitivity and minimizes errors from end contact resistances.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q113.</span><span>Find unknown \(X\) if balance length is \(40\text{ cm}\) using standard resistance \(R = 10\,\Omega\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(X = R\frac{l}{100-l} = 10 \times \frac{40}{60} = 6.67\,\Omega\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q114.</span><span>Does altering driver battery voltage shift the balance point?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">No. The balance point depends strictly on the resistance ratio of the bridge arms, independent of line voltage.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q115.</span><span>Why are bridge wires made of alloy compositions like Constantan?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Alloys combine high resistivity with a low temperature coefficient, keeping wire resistance stable during operation.</div></div>
+            </div>
+
+            <div class="case-passage">
+                <strong>Case Study 4: Potentiometer Mechanics</strong><br>
+                Potentiometers measure potential profiles using a null-balance method that draws zero current. A primary driver cell sets up a uniform potential drop per unit length along the wire, known as the potential gradient (\(k = V/L\)).
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q116.</span><span>Define potential gradient.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The potential drop per unit length along the potentiometer wire (\(k = \frac{V}{L}\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q117.</span><span>State how to increase the measurement sensitivity of a potentiometer.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Sensitivity can be increased by reducing the potential gradient, either by increasing total wire length or decreasing primary current.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q118.</span><span>Cell 1 balances at \(250\text{ cm}\) and Cell 2 balances at \(200\text{ cm}\). Find their EMF ratio.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(\frac{E_1}{E_2} = \frac{l_1}{l_2} = \frac{250}{200} = 1.25\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q119.</span><span>Why will a potentiometer fail to balance if the test cell EMF exceeds the primary wire voltage drop?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">The wire cannot provide an opposing potential large enough to cancel the test cell's voltage, making it impossible to bring galvanometer current to zero.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q120.</span><span>Why must all positive terminals connect to the same zero-end node?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">This alignment ensures that the potential drop along the wire opposes the test cell's EMF, which is necessary to achieve a null balance.</div></div>
+            </div>
+        </section>
+
+        <section id="sec-la" class="section-wrapper">
+            <h2 class="section-title">Section G: Long Answer Questions (20 Questions)</h2>
+            
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q121.</span><span>State Kirchhoff's network rules. Detail the analytical layout strategies used to parse multi-loop formats, stating core physical foundations.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        <strong>1. Kirchhoff's First Law (Junction Rule):</strong> The algebraic sum of currents meeting at any network node is zero (\(\sum I = 0\)). Currents entering a junction are designated positive, and currents exiting are negative. Physical Foundation: <strong>Law of Conservation of Charge</strong>.<br><br>
+                        <strong>2. Kirchhoff's Second Law (Loop Rule):</strong> The algebraic sum of potential changes around any closed circuit loop is zero (\(\sum \Delta V = 0\)). Physical Foundation: <strong>Law of Conservation of Energy</strong>.<br><br>
+                        <strong>Analytical Loop Strategies:</strong><br>
+                        • Assign current paths to each branch and use the Junction Rule at nodes to minimize variables.<br>
+                        • Choose a clockwise or counter-clockwise path to traverse the loops.<br>
+                        • Sign Convention: (a) Traversing a resistor in the direction of current creates a potential drop (\(-IR\)); traversing against current creates a potential rise (\(+IR\)). (b) Passing through a cell from negative to positive terminal adds a potential rise (\(+E\)); passing from positive to negative terminal creates a drop (\(-E\)).<br>
+                        • Construct the loop linear equations and solve for the unknown currents.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q122.</span><span>Derive the balanced cross-product verification equations for a Wheatstone bridge network using Kirchhoff's rules.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        Consider four bridge arm resistors \(P, Q, R, S\) forming a diamond loop, with a central galvanometer branch of resistance \(G\).<br>
+                        Let total current \(I\) split into \(I_1\) through arm \(P\) and \(I_2\) through arm \(R\). At the top node, current \(I_g\) branches through the galvanometer, leaving (\(I_1 - I_g\)) to pass through arm \(Q\). The currents recombine at the bottom node, sending (\(I_2 + I_g\)) through arm \(S\).<br>
+                        Apply Kirchhoff's Loop Rule to the left loop:
+                        \[ -I_1P - I_gG + I_2R = 0 \]<br>
+                        Apply the Loop Rule to the right loop:
+                        \[ -(I_1 - I_g)Q + (I_2 + I_g)S + I_gG = 0 \]<br>
+                        At balance, no current flows through the galvanometer branch (\(I_g = 0\)). This simplifies the equations to:
+                        \[ I_1P = I_2R \implies \frac{I_1}{I_2} = \frac{R}{P} \]<br>
+                        \[ I_1Q = I_2S \implies \frac{I_1}{I_2} = \frac{S}{Q} \]<br>
+                        Equating the current ratios yields the final bridge balance condition:
+                        \[ \frac{R}{P} = \frac{S}{Q} \implies \frac{P}{Q} = \frac{R}{S} \]
+                        <svg class="schematic-svg" viewBox="0 0 160 120">
+                            <path d="M 80 10 L 20 60 L 80 110 L 140 60 Z" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+                            <circle cx="80" cy="10" r="3"/> <circle cx="20" cy="60" r="3"/>
+                            <circle cx="80" cy="110" r="3"/> <circle cx="140" cy="60" r="3"/>
+                            <line x2="80" y2="10" x1="80" y1="110" stroke="#0099ff" stroke-width="1.2" stroke-dasharray="3,2"/>
+                            <text x="40" y="35" font-size="10">P</text> <text x="110" y="35" font-size="10">Q</text>
+                            <text x="40" y="95" font-size="10">R</text> <text x="110" y="95" font-size="10">S</text>
+                            <text x="84" y="62" font-size="9" fill="#0099ff">G (Ig=0)</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q123.</span><span>Explain the operating principle of a potentiometer. Detail how it can compare cell EMFs and determine internal resistance.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        <strong>Operating Principle:</strong> When a steady current flows through a wire of uniform cross-section, the potential drop across any segment is directly proportional to its length (\(V \propto l \implies V = kl\)), where \(k\) is the potential gradient.<br><br>
+                        <strong>Comparing EMFs:</strong> Connect two test cells to the wire through a two-way switch. Find the null balance length for each cell alternately. Since the bridge draws zero current at balance, the wire's potential drop matches the cell's open-circuit EMF exactly:
+                        \[ E_1 = kl_1 \quad \text{and} \quad E_2 = kl_2 \implies \frac{E_1}{E_2} = \frac{l_1}{l_2} \]<br>
+                        <strong>Determining Internal Resistance:</strong> First, find the balance length \(l_1\) with the cell on an open circuit (\(E = kl_1\)). Next, close a shunt switch to connect a known external resistance \(R\) across the cell, and find the new balance length \(l_2\), which measures terminal voltage (\(V = kl_2\)). Using the internal resistance relationship \(r = R\left(\frac{E}{V}-1\right)\), we can substitute the lengths to find:
+                        \[ r = R\left(\frac{l_1}{l_2} - 1\right) \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q124.</span><span>Derive equations for equivalent EMF and resistance for cells connected in series and parallel. Discuss when each is preferred.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Series: \(E_{\text{eq}} = nE, r_{\text{eq}} = nr\). Preferred when external load resistance is much larger than internal resistance (\(R \gg nr\)). Parallel: \(E_{\text{eq}} = E, r_{\text{eq}} = \frac{r}{n}\). Preferred when external load resistance is much smaller than internal resistance (\(R \ll r\)).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q125.</span><span>Derive the microscopic equation \(v_d = \frac{eE\tau}{m}\) and detail how temperature affects resistivity factors.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Electric field forces accelerate free electrons (\(a = \frac{eE}{m}\)). Collisions with lattice ions reset this motion every relaxation interval \(\tau\), giving a directional drift speed: \(v_d = a\tau = \frac{eE\tau}{m}\). Substituting this into current equations gives resistivity: \(\rho = \frac{m}{ne^2\tau}\). Heating increases lattice vibrations, shortening \(\tau\) and raising resistivity.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q126.</span><span>A potential difference \(V\) is applied across a wire of length \(l\) and area \(A\). Analyze how drift speed and resistance respond if: (a) \(V\) is doubled, (b) \(l\) is halved, or (c) the wire is stretched to double its length.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">(a) Doubling \(V\) doubles electric field, which doubles drift speed; resistance is unchanged. (b) Halving length doubles electric field and drift speed; resistance is halved. (c) Stretching to double length increases resistance fourfold (\(4R\)) because area is halved. Under a constant voltage, the electric field and drift speed are halved.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q127.</span><span>Contrast primary and secondary chemical cells across mechanical layouts, operating efficiencies, and industrial deployments.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Primary cells rely on irreversible chemical paths, have higher internal resistance, and cannot be recharged (e.g., zinc-carbon cells in remotes). Secondary cells use reversible reactions, have low internal resistance, and can be recharged efficiently (e.g., lead-acid or Li-ion batteries in vehicles and phones).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q128.</span><span>State Joule's heating laws. Explain how power lines minimize line losses during long-distance transmission.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(P = I^2R\). Line heating is minimized by using transformers to step up transmission lines to high voltages. This significantly reduces the current (\(I\)) required to transmit a given amount of power, minimizing energy losses (\(I^2R\)) along the long-distance lines.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q129.</span><span>What is potentiometer sensitivity? Explain how it can be adjusted experimentally.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Sensitivity is a potentiometer's ability to resolve small voltage differences, which requires a low potential gradient (\(k\)). Experimentally, sensitivity is increased by extending the total wire length or using a series rheostat to reduce primary circuit current.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q130.</span><span>Derive a general efficiency equation for power delivery from a real battery to a variable external load \(R\).</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Total power is \(P_{\text{total}} = EI\), and useful load power is \(P_{\text{useful}} = I^2R\). Efficiency is given by:<br> \(\eta = \frac{P_{\text{useful}}}{P_{\text{total}}} = \frac{I^2R}{EI} = \frac{IR}{E} = \frac{\left(\frac{E}{R+r}\right)R}{E} = \frac{R}{R+r} = \frac{1}{1 + r/R}\). Efficiency approaches \(100\%\) when \(R \gg r\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q131.</span><span>Define charge mobility. Derive its relationship with electrical conductivity in a material containing multiple types of charge carriers.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">\(\mu = \frac{v_d}{E}\). Since \(j = nev_d = ne\mu E\) and Ohm's law states \(j = \sigma E\), conductivity is \(\sigma = ne\mu\). For multiple carrier types (such as electrons and holes in semiconductors), conductivity combines additively: \(\sigma = e(n_e\mu_e + n_h\mu_h)\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q132.</span><span>Explain why non-linear \(V-I\) parameters occur in semiconductor layouts based on charge carrier dynamics.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Unlike metals, where free electron density is constant, an applied voltage across a semiconductor can alter its internal carrier concentration (\(n\)) by breaking covalent bonds or injecting carriers across junctions, which causes resistance to vary with voltage.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q133.</span><span>Detail the mathematical conversions required to adapt a standard galvanometer into a high-range voltmeter and ammeter.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Voltmeter conversion: Connect a large resistance \(R\) in series with the galvanometer: \(R = \frac{V}{I_g} - G\). Ammeter conversion: Connect a small shunt resistance \(S\) in parallel with the galvanometer: \(S = \frac{I_gG}{I - I_g}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q134.</span><span>What causes contact resistance at bridge junctions? How does it affect measurements, and how is it minimized?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Contact resistance is caused by surface roughness, oxidation layers, or loose joints at connections. This introduces unintended resistance into the bridge arms, which can skew balance point calculations. It is minimized by using thick, clean copper strips and repeating measurements after swapping components.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q135.</span><span>Explain standard cell stabilization mechanisms. Why must reference standard cells maintain low discharge currents?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Standard reference cells use specific chemical combinations (like cadmium and mercury) to maintain a highly stable, reproducible EMF. They must maintain near-zero discharge currents during measurements because drawing current triggers internal reactions and concentration polarization that destabilize the reference voltage.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q136.</span><span>Discuss how structural lattice defects and chemical impurity doping modify conductor resistivity.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Defects, dislocations, and impurities disrupt the regular periodicity of the crystal lattice. These irregularities act as additional scattering sites for drifting electrons, which shortens the mean relaxation time (\(\tau\)) and increases the material's resistivity.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q137.</span><span>Derive the total equivalent resistance for a complex network of nested parallel resistor groups connected in series.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">First, calculate the equivalent resistance for each parallel group using the reciprocal rule: \(R_p = \left(\sum \frac{1}{R_i}\right)^{-1}\). Next, substitute these simplified values back into the circuit and sum them linearly to find the total series resistance: \(R_{\text{total}} = \sum R_{\text{series\_elements}} + \sum R_{p\_groups}\).</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q138.</span><span>Explain thermal stability in electrical instrumentation. Contrast the performance of Manganin versus Copper under operating conditions.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Thermal stability is an instrument's ability to maintain stable electrical properties as operating temperatures vary. Copper has a high temperature coefficient (\(\alpha \approx 3.9 \times 10^{-3}\text{ K}^{-1}\)), meaning its resistance shifts significantly with temperature changes. Manganin has a near-zero coefficient (\(\alpha \approx 10^{-5}\text{ K}^{-1}\)), keeping its resistance stable even when heated by operating currents.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q139.</span><span>Why are electric current densities non-uniform across the cross-sections of non-cylindrical or bent wires?</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button><div class="ans-container"><div class="ans-body">Electric field lines bend to follow the geometry of the conductor, crowding together along shorter inner curves or narrower regions. Since current density maps directly to the local electric field (\(\vec{j} = \sigma \vec{E}\)), this uneven field distribution results in varying current densities.</div></div>
+            </div>
+            <div class="card-question">
+                <div class="q-header"><span class="q-num">Q140.</span><span>State the maximum power transfer theorem for DC networks. Prove it mathematically, and explain why power utilities avoid operating at this point.</span></div>
+                <button class="btn-reveal" onclick="toggleAns(this)">View Answer</button>
+                <div class="ans-container">
+                    <div class="ans-body">
+                        <strong>Theorem Statement:</strong> A power source delivers maximum power to an external load resistor \(R\) when the load resistance matches the source's internal resistance (\(R = r\)).<br><br>
+                        <strong>Proof:</strong> Power delivered to the load is \(P = I^2R = \frac{E^2R}{(R+r)^2}\). To find the value of \(R\) that maximizes power, take the derivative with respect to \(R\) and set it to zero:
+                        \[ \frac{dP}{dR} = E^2 \left[ \frac{(R+r)^2(1) - R \cdot 2(R+r)}{(R+r)^4} \right] = 0 \implies (R+r) - 2R = 0 \implies R = r \]<br><br>
+                        <strong>Utility Analysis:</strong> Power utilities avoid operating at this point because when \(R = r\), exactly half the generated energy is lost as heat within the source's internal resistance, giving a low electrical efficiency of only \(50\%\). This high internal heat loss could also damage or destroy generator equipment. Instead, grids operate with large load resistances (\(R \gg r\)) to maximize energy efficiency.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function filterSection(secId) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if(event) { event.target.classList.add('active'); }
+            document.querySelectorAll('.section-wrapper').forEach(w => {
+                w.style.display = (secId === 'all' || w.id === 'sec-' + secId) ? 'block' : 'none';
+            });
+        }
+
+        function toggleAns(btn) {
+            var container = btn.nextElementSibling;
+            container.classList.toggle('visible');
+            btn.innerText = container.classList.contains('visible') ? "Hide Answer" : "View Answer";
+            
+            // Re-typeset math elements dynamically when an item is revealed
+            if (window.MathJax && container.classList.contains('visible')) {
+                MathJax.typesetPromise([container]).catch(function (err) {
+                    console.log('MathJax verification layout pass bypassed: ' + err.message);
+                });
+            }
+        }
+
+        function printEngine(showAnswers) {
+            document.querySelectorAll('.ans-container').forEach(c => {
+                if (showAnswers) {
+                    c.classList.add('print-force-show');
+                    c.classList.remove('print-force-hide');
+                    if (window.MathJax) { MathJax.typesetPromise([c]); }
+                } else {
+                    c.classList.add('print-force-hide');
+                    c.classList.remove('print-force-show');
+                }
+            });
+            window.print();
+        }
+    </script>
+</body>
+</html>
